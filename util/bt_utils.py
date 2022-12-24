@@ -26,7 +26,7 @@ class BtConfig:
             print('bt_parse error:  No peer information for myself (id ', self.identity, ')!')
             sys.exit(1)
 
-        self.ip= p[1]
+        self.ip = p[1]
         self.port = int(p[2])
 
     def bt_parse_peer_list(self):
