@@ -31,7 +31,7 @@ ex_sending_chunkhash = ""
 # ex_max_send = 0 # used for DENIED packet, deprecated
 redundant_ack = 0 # redundant number of ack, if it == 3, fast retransmit
 last_ack = -1 # last Ack in header
-downloading_connection = dict() # indicate that corresponding chunk is in transfer, in chunkhash: from_addr
+connections = dict() # indicate that corresponding chunk is in transfer, in chunkhash: from_addr
 pkt_time_stamp = dict() # used for calculating RTT, in chunkhash: start_time
 
 # used for time out
@@ -39,9 +39,14 @@ estimated_rtt = 0.95
 dev_rtt = 0.05
 timeout_interval = 1.0
 
+# used for congestion control, need to modify
+cwnd = 0
+rwnd = 0
+ssthresh = 0
+
 # ------------ notes ------------
 # Ack & Seq in the header are better not to change. They are different from what we learnt in course
-#
+# Better not to modify the header
 #
 #
 # -------------------------------
@@ -56,15 +61,15 @@ def process_download(sock, chunkfile, outputfile):
     global ex_received_chunk
     global ex_downloading_chunkhash
     
-    global downloading_connection
+    global connections
 
     ex_output_file = outputfile
+    connections[ex_output_file] = tuple()
     # Step 1: read chunkhash to be downloaded from chunkfile
     download_hash = bytes()
     with open(chunkfile, 'r') as cf:
         index, datahash_str = cf.readline().strip().split(" ")
         ex_received_chunk[datahash_str] = bytes()
-        downloading_connection[datahash_str] = tuple()
         ex_downloading_chunkhash = datahash_str
 
         # hex_str to bytes
@@ -92,7 +97,7 @@ def process_inbound_udp(sock):
     global ex_sending_chunkhash
     
     # global ex_max_send
-    global downloading_connection
+    global connections
     global last_ack
     global redundant_ack
     
@@ -140,17 +145,17 @@ def process_inbound_udp(sock):
         get_chunk_hash = data[:20]
 
         # send back GET pkt
-        if downloading_connection[get_chunk_hash] == tuple() or downloading_connection[get_chunk_hash] == from_addr:
+        get_header = bytes()
+        if connections[ex_output_file] == tuple() or connections[ex_output_file] == from_addr:
             # if it has not built connection, then Ack = 0
-            downloading_connection[get_chunk_hash] = from_addr
+            connections[ex_output_file] = from_addr
             get_header = struct.pack("!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunk_hash), 0, 0)
-            get_pkt = get_header + get_chunk_hash
-            sock.sendto(get_pkt, from_addr)
         else:
             # if it has built connection, then Ack = -1
             get_header = struct.pack("!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunk_hash), 0, -1)
-            get_pkt = get_header + get_chunk_hash
-            sock.sendto(get_pkt, from_addr)
+        
+        get_pkt = get_header + get_chunk_hash
+        sock.sendto(get_pkt, from_addr)
     elif Type == 2:
         # received a GET pkt
         chunk_data = config.haschunks[ex_sending_chunkhash][:MAX_PAYLOAD]
@@ -212,7 +217,8 @@ def process_inbound_udp(sock):
                 data_pkt = data_header+chunk_data
                 sock.sendto(data_pkt, from_addr)
         else:
-            # calculate RTT
+            last_ack = ack_num
+            # calculate RTT and time_interval
             start_time = pkt_time_stamp.get(ex_sending_chunkhash, -1)
             if start_time != -1:
                 end_time = time.time()
