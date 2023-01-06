@@ -42,7 +42,7 @@ when fetching updates from the staff repo.
 # How to run the example
 This will be short version of the example described in the document.
 
-In our example, a file will be divived into 4 chunks, and peer1 will have chunk1 and chunk2,
+In our example, a file will be divided into 4 chunks, and peer1 will have chunk1 and chunk2,
 while peer2 will have chunk3 and chunk4. Peer1 will be invoked to download chunk3 from peer2.
 
 ## Step 1: Generate chunk data for peer and peer2:
@@ -62,7 +62,7 @@ perl util/hupsim.pl -m example/ex_topo.map -n example/ex_nodes_map -p 52305 -v 2
 ```
 
 ## Step 3: Start Peers
-You need to start each peer in theri own shells.
+You need to start each peer in their own shells.
 ### Start the sender:
 ```
 export SIMULATOR="127.0.0.1: 52305"
