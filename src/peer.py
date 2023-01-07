@@ -33,6 +33,7 @@ received_chunk_list = dict() # used for sorting chunks in select retransmit
 # ex_max_send = 0 # used for DENIED packet, deprecated
 redundant_ack = 0 # redundant number of ack, if it == 3, fast retransmit
 last_ack = -1 # last Ack in header
+biggest_ack = -1 # the biggest Ack received in header. Not always equal to last_ack
 connections = dict() # indicate that corresponding chunk is in transfer, in chunkhash: from_addr
 pkt_time_stamp = dict() # used for calculating RTT, in chunkhash: start_time
 
@@ -42,9 +43,9 @@ dev_rtt = 0.05
 timeout_interval = 1.0
 
 # used for congestion control, need to modify
-cwnd = 0
+cwnd = 1
 rwnd = 0
-ssthresh = 0
+ssthresh = 64
 
 # ------------ notes ------------
 # Ack & Seq in the header are better not to change. They are different from what we learnt in course
@@ -112,6 +113,7 @@ def process_receiver(sock, from_addr, Type, data, plen, Seq):
     global connections
     
     global last_ack
+    global biggest_ack
     
     global received_chunk_list
     
@@ -135,13 +137,15 @@ def process_receiver(sock, from_addr, Type, data, plen, Seq):
     elif Type == 3:
         # received a DATA pkt
         # guarantee that the chunk is sorted
-        if Seq >= 2:
-            if last_seq in received_chunk_list:
-                received_chunk_list[Seq] = data
+        # if Seq >= 2:
+        #     if last_seq in received_chunk_list:
+        #         received_chunk_list[Seq] = data
         ex_received_chunk[ex_downloading_chunkhash] += data
 
         # send back ACK
         ack_num = Seq
+        last_ack = Seq
+        biggest_ack = Seq
         ack_pkt = struct.pack("!HBBHHII", 52305, 68, 4, HEADER_LEN, HEADER_LEN, 0, ack_num)
         sock.sendto(ack_pkt, from_addr)
         
