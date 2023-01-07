@@ -32,10 +32,14 @@ received_chunk_list = dict() # used for sorting chunks in select retransmit
 
 # ex_max_send = 0 # used for DENIED packet, deprecated
 redundant_ack = 0 # redundant number of ack, if it == 3, fast retransmit
-last_ack = -1 # last Ack in header
-biggest_ack = -1 # the biggest Ack received in header. Not always equal to last_ack
 connections = dict() # indicate that corresponding chunk is in transfer, in chunkhash: from_addr
 pkt_time_stamp = dict() # used for calculating RTT, in chunkhash: start_time
+
+# only used in sender
+last_ack = -1 # last Ack in header
+# only used in receiver
+smallest_seq = -1 # the smallest Seq in header
+biggest_seq = -1 # the biggest Seq received in header. Not always equal to smallest_seq
 
 # used for time out
 estimated_rtt = 0.95
@@ -112,8 +116,8 @@ def process_receiver(sock, from_addr, Type, data, plen, Seq):
     
     global connections
     
-    global last_ack
-    global biggest_ack
+    global smallest_seq
+    global biggest_seq
     
     global received_chunk_list
     
@@ -124,7 +128,7 @@ def process_receiver(sock, from_addr, Type, data, plen, Seq):
 
         # send back GET pkt
         get_header = bytes()
-        if connections[ex_output_file] == tuple() or connections[ex_output_file] == from_addr:
+        if connections.get(ex_output_file) == None or connections[ex_output_file] == from_addr:
             # if it has not built connection, then Ack = 0
             connections[ex_output_file] = from_addr
             get_header = struct.pack("!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunk_hash), 0, 0)
@@ -136,16 +140,27 @@ def process_receiver(sock, from_addr, Type, data, plen, Seq):
         sock.sendto(get_pkt, from_addr)
     elif Type == 3:
         # received a DATA pkt
-        # guarantee that the chunk is sorted
-        # if Seq >= 2:
-        #     if last_seq in received_chunk_list:
-        #         received_chunk_list[Seq] = data
-        ex_received_chunk[ex_downloading_chunkhash] += data
+        # guarantee that the chunk is sorted        
+        if smallest_seq == biggest_seq: # in order
+            ex_received_chunk[ex_downloading_chunkhash] += data
+        else: # disorder
+            received_chunk_list[Seq] = data
 
         # send back ACK
-        ack_num = Seq
-        last_ack = Seq
-        biggest_ack = Seq
+        biggest_seq = Seq if Seq > biggest_seq else biggest_seq
+        if Seq != smallest_seq+1: # not continuous pkt received
+            ack_num = smallest_seq
+        elif Seq == biggest_seq-1: # complete serial pkts
+            # add into ex_received_chunk
+            for idx in range(smallest_seq+1, biggest_seq+1):
+                ex_received_chunk[ex_downloading_chunkhash] += received_chunk_list[idx]
+            # reset
+            ack_num = biggest_seq
+            smallest_seq = biggest_seq
+        else: # normal
+            ack_num = Seq
+            smallest_seq = Seq
+        
         ack_pkt = struct.pack("!HBBHHII", 52305, 68, 4, HEADER_LEN, HEADER_LEN, 0, ack_num)
         sock.sendto(ack_pkt, from_addr)
         
@@ -181,7 +196,6 @@ def process_sender(sock, from_addr, Type, data, plen, Ack):
     
     global ex_output_file
     
-    global connections
     global pkt_time_stamp
     
     global last_ack
@@ -223,22 +237,27 @@ def process_sender(sock, from_addr, Type, data, plen, Ack):
             sock.sendto(ihave_pkt, from_addr)
     elif Type == 2:
         # received a GET pkt
-        chunk_data = config.haschunks[ex_sending_chunkhash][:MAX_PAYLOAD]
-
         # send back DATA 
         # only valid when Ack == 0
         if Ack == 0:
-            # start timer in sender
-            pkt_time_stamp[ex_output_file] = time.time()
-            # with Seq = 1 in header
-            data_header = struct.pack("!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN+len(chunk_data), 1, 0)
-            data_pkt = data_header+chunk_data
-            sock.sendto(data_pkt, from_addr)
+            # send 5 pkt at one time
+            for seq_num in range(1, 6): # seq_num = [1, 2, 3, 4, 5]
+                left = (seq_num-1) * MAX_PAYLOAD
+                right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
+                chunk_data = config.haschunks[ex_sending_chunkhash][left: right]
+                # start timer in sender
+                pkt_time_stamp[(ex_sending_chunkhash, seq_num)] = time.time()
+                # with Seq = 1 in header
+                data_header = struct.pack("!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN+len(chunk_data), seq_num, 0)
+                data_pkt = data_header+chunk_data
+                sock.sendto(data_pkt, from_addr)
     elif Type == 4:
         # received an ACK pkt
         ack_num = Ack
+        # must process all retransmit then normally send DATA
         if last_ack == ack_num:
             redundant_ack += 1
+            # fast retransmit
             if redundant_ack == 3:
                 redundant_ack = 0
                 left = (ack_num) * MAX_PAYLOAD
