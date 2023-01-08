@@ -1,16 +1,16 @@
-import math
-import time
-import pickle
-import argparse
-import hashlib
-import util.bt_utils as bt_utils
-import socket
-import struct
-import util.simsocket as simsocket
-import select
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+import select
+import util.simsocket as simsocket
+import struct
+import socket
+import util.bt_utils as bt_utils
+import hashlib
+import argparse
+import pickle
+import math
+import time
 
 """
 This is CS305 project skeleton code.
@@ -120,8 +120,7 @@ def process_download(sock, chunkfile, outputfile):
     # |2byte  header len  |2byte pkt len |
     # |      4byte  seq                  |
     # |      4byte  ack                  |
-    whohas_header = struct.pack(
-        "!HBBHHII", 52305, 68, 0, HEADER_LEN, HEADER_LEN + len(download_hash), 0, 0)
+    whohas_header = struct.pack("!HBBHHII", 52305, 68, 0, HEADER_LEN, HEADER_LEN + len(download_hash), 0, 0)
     whohas_pkt = whohas_header + download_hash
 
     # Step3: flooding whohas to all peers in peer list
@@ -140,8 +139,7 @@ def process_download(sock, chunkfile, outputfile):
 def process_inbound_udp(sock):
     # Receive pkt
     pkt, from_addr = sock.recvfrom(BUF_SIZE)
-    Magic, Team, Type, hlen, plen, Seq, Ack = struct.unpack(
-        "!HBBHHII", pkt[:HEADER_LEN])
+    Magic, Team, Type, hlen, plen, Seq, Ack = struct.unpack("!HBBHHII", pkt[:HEADER_LEN])
     data = pkt[HEADER_LEN:]
     if Type in (1, 3):
         process_receiver(sock, from_addr, Type, data, plen, Seq)
@@ -153,10 +151,7 @@ def process_inbound_udp(sock):
 
 def time_out_retransmission(sock, from_addr):
     global pkt_time_stamp_dict
-    global config
     global timeout_interval_dict
-    global MAX_PAYLOAD
-    global CHUNK_DATA_SIZE
     cur_time = time.time()
     key = ((config.ip, config.port), from_addr)
     pkt_time_stamp = pkt_time_stamp_dict.get(key, -1)
@@ -171,8 +166,7 @@ def time_out_retransmission(sock, from_addr):
             left = (seq_num - 1) * MAX_PAYLOAD
             right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
             chunk_data = config.haschunks[chunk_hash][left: right]
-            data_header = struct.pack(
-                "!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN + len(chunk_data), seq_num, 0)
+            data_header = struct.pack("!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN + len(chunk_data), seq_num, 0)
             data_pkt = data_header + chunk_data
             sock.sendto(data_pkt, from_addr)
 
@@ -214,8 +208,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
             ex_downloading_chunkhash_dict[key] = bytes.hex(get_chunkhash)
             smallest_seq_dict[key], biggest_seq_dict[key] = 0, 0
             if_seq_in_order_dict[key] = True
-            get_header = struct.pack(
-                "!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunkhash), 0, 0)
+            get_header = struct.pack("!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunkhash), 0, 0)
             get_pkt = get_header + get_chunkhash
             sock.sendto(get_pkt, from_addr)
         else:
@@ -223,8 +216,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
             # ex_output_file_dict.pop(key)
             # ex_received_chunk_dict.pop(key)
             # ex_downloading_chunkhash_dict.pop(key)
-            denied_pkt = struct.pack(
-                "!HBBHHII", 52305, 68, 5, HEADER_LEN, HEADER_LEN, 0, 0)
+            denied_pkt = struct.pack("!HBBHHII", 52305, 68, 5, HEADER_LEN, HEADER_LEN, 0, 0)
             sock.sendto(denied_pkt, from_addr)
     elif Type == 3:
         # received a DATA pkt
@@ -279,8 +271,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         if_seq_in_order_dict[key] = if_seq_in_order
         received_chunk_list_dict[key] = received_chunk_list
 
-        ack_pkt = struct.pack("!HBBHHII", 52305, 68, 4,
-                              HEADER_LEN, HEADER_LEN, 0, ack_num)
+        ack_pkt = struct.pack("!HBBHHII", 52305, 68, 4, HEADER_LEN, HEADER_LEN, 0, ack_num)
         sock.sendto(ack_pkt, from_addr)
 
         # see if finished
@@ -318,8 +309,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
                 connections[get_chunkhash] = key
                 smallest_seq_dict[key], biggest_seq_dict[key] = 0, 0
                 if_seq_in_order_dict[key] = True
-                get_header = struct.pack(
-                    "!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunkhash), 0, 0)
+                get_header = struct.pack("!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunkhash), 0, 0)
                 get_pkt = get_header + get_chunkhash
                 sock.sendto(get_pkt, from_addr)
 
@@ -365,8 +355,7 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
         if len(ihave_chunkhash_list) > 0:
             # send back IHAVE pkt
             ihave_chunkhash = b''.join(ihave_chunkhash_list)
-            ihave_header = struct.pack(
-                "!HBBHHII", 52305, 68, 1, HEADER_LEN, HEADER_LEN+len(ihave_chunkhash), 0, 0)
+            ihave_header = struct.pack("!HBBHHII", 52305, 68, 1, HEADER_LEN, HEADER_LEN+len(ihave_chunkhash), 0, 0)
             ihave_pkt = ihave_header + ihave_chunkhash
             sock.sendto(ihave_pkt, from_addr)
     elif Type == 2:
@@ -382,20 +371,17 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
         smallest_ack_dict[key], redundant_ack_dict[key] = 0, 0
         estimated_rtt_dict[key], dev_rtt_dict[key], timeout_interval_dict[key] = 0.95, 0.05, 1.0
         ex_sending_chunkhash = ex_sending_chunkhash_dict[key]
-        # seq_num = [1, 2, 3, 4, 5]
-        for seq_num in range(1, math.floor(cwnd[key] + 1)):
+        pkt_time_stamp_dict[key] = dict()
+        for seq_num in range(1, math.floor(cwnd[key] + 1)): # seq_num = [1, ..., math.floor(cwnd[key] + 1)]
             biggest_ack_dict[key] = seq_num
             left = (seq_num-1) * MAX_PAYLOAD
             right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
             flag = (seq_num) * MAX_PAYLOAD >= CHUNK_DATA_SIZE
             chunk_data = config.haschunks[ex_sending_chunkhash][left: right]
             # start timer in sender
-            pkt_time_stamp_dict[key] = dict()
-            pkt_time_stamp_dict[key][(
-                ex_sending_chunkhash, seq_num)] = time.time()
+            pkt_time_stamp_dict[key][(ex_sending_chunkhash, seq_num)] = time.time()
             # with Seq = 1 in header
-            data_header = struct.pack(
-                "!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN + len(chunk_data), seq_num, 0)
+            data_header = struct.pack("!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN + len(chunk_data), seq_num, 0)
             data_pkt = data_header + chunk_data
             sock.sendto(data_pkt, from_addr)
             if flag:
@@ -403,18 +389,16 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
     elif Type == 4:
         # received an ACK pkt
         # adjust congestion window
-        if (status[key] == 1):  # slow start
+        if status[key] == 1:  # slow start
             cwnd[key] += 1
             if cwnd[key] >= ssthresh[key]:
                 status[key] = 2
-        elif (status[key] == 2):  # congestion avoidance
+        elif status[key] == 2:  # congestion avoidance
             cwnd[key] += (1 / cwnd[key])
-            pass
 
         ack_num = Ack
         # must process all retransmit then normally send DATA
-        smallest_ack, biggest_ack, redundant_ack = smallest_ack_dict[
-            key], biggest_ack_dict[key], redundant_ack_dict[key]
+        smallest_ack, biggest_ack, redundant_ack = smallest_ack_dict[key], biggest_ack_dict[key], redundant_ack_dict[key]
         ex_sending_chunkhash = ex_sending_chunkhash_dict[key]
         if smallest_ack == ack_num:
             redundant_ack += 1
@@ -429,26 +413,22 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 left = (ack_num) * MAX_PAYLOAD
                 right = min((ack_num + 1) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
                 chunk_data = config.haschunks[ex_sending_chunkhash][left: right]
-                data_header = struct.pack(
-                    "!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN + len(chunk_data), ack_num + 1, 0)
+                data_header = struct.pack("!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN + len(chunk_data), ack_num + 1, 0)
                 data_pkt = data_header + chunk_data
                 sock.sendto(data_pkt, from_addr)
         else:
             smallest_ack = ack_num
             redundant_ack = 0  # clear redundant_ack
             # calculate RTT and time_interval
-            start_time = pkt_time_stamp_dict[key].get(
-                (ex_sending_chunkhash, ack_num), -1)
-            estimated_rtt, dev_rtt, timeout_interval = estimated_rtt_dict[
-                key], dev_rtt_dict[key], timeout_interval_dict[key]
+            start_time = pkt_time_stamp_dict[key].get((ex_sending_chunkhash, ack_num), -1)
+            estimated_rtt, dev_rtt, timeout_interval = estimated_rtt_dict[key], dev_rtt_dict[key], timeout_interval_dict[key]
             if start_time != -1:
                 pkt_time_stamp_dict[key].pop((ex_sending_chunkhash, ack_num))
                 end_time = time.time()
                 sample_rtt = end_time - start_time
 
                 estimated_rtt = 0.875 * estimated_rtt + 0.125 * sample_rtt
-                dev_rtt = 0.75 * dev_rtt + 0.25 * \
-                    abs(estimated_rtt - sample_rtt)
+                dev_rtt = 0.75 * dev_rtt + 0.25 * abs(estimated_rtt - sample_rtt)
                 timeout_interval = estimated_rtt + 4 * dev_rtt
 
                 estimated_rtt_dict[key], dev_rtt_dict[key], timeout_interval_dict[key] = estimated_rtt, dev_rtt, timeout_interval
@@ -473,8 +453,7 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                     pkt_time_stamp_dict[key][(
                         ex_sending_chunkhash, seq_num)] = time.time()
                     # send next data
-                    data_header = struct.pack(
-                        "!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN + len(chunk_data), seq_num, 0)
+                    data_header = struct.pack("!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN + len(chunk_data), seq_num, 0)
                     data_pkt = data_header + chunk_data
                     sock.sendto(data_pkt, from_addr)
                     if flag:
@@ -523,14 +502,10 @@ if __name__ == '__main__':
         The timeout will be set when running test scripts. PLEASE do not change timeout if it set.
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '-p', type=str, help='<peerfile>     The list of all peers', default='nodes.map')
-    parser.add_argument(
-        '-c', type=str, help='<chunkfile>    Pickle dumped dictionary {chunkhash: chunkdata}')
-    parser.add_argument(
-        '-m', type=int, help='<maxconn>      Max # of concurrent sending')
-    parser.add_argument(
-        '-i', type=int, help='<identity>     Which peer # am I?')
+    parser.add_argument('-p', type=str, help='<peerfile>     The list of all peers', default='nodes.map')
+    parser.add_argument('-c', type=str, help='<chunkfile>    Pickle dumped dictionary {chunkhash: chunkdata}')
+    parser.add_argument('-m', type=int, help='<maxconn>      Max # of concurrent sending')
+    parser.add_argument('-i', type=int, help='<identity>     Which peer # am I?')
     parser.add_argument('-v', type=int, help='verbose level', default=0)
     parser.add_argument('-t', type=int, help="pre-defined timeout", default=0)
     args = parser.parse_args()
