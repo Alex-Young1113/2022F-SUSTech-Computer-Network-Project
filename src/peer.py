@@ -29,10 +29,8 @@ config: bt_utils.BtConfig = None
 
 ex_output_file_dict = dict()
 ex_received_chunk_dict = dict()
-# Tuple(sender_addr, receiver_addr): str
-ex_downloading_chunkhash_dict = dict()
-# Tuple(sender_addr, receiver_addr): chunkhash_str: str
-ex_sending_chunkhash_dict = dict()
+ex_downloading_chunkhash_dict = dict() # Tuple(sender_addr, receiver_addr): str
+ex_sending_chunkhash_dict = dict() # Tuple(sender_addr, receiver_addr): chunkhash_str: str
 
 # ------
 # !! ONLY modified in receiver when receives IHAVE pkt. ONLY viewed in receiver when receives DATA pkt to see if there is next get_chunkhash.
@@ -49,36 +47,33 @@ ex_sending_chunkhash_dict = dict()
 #   A->B: GET 2
 #   download 2 from B
 # ------
-# Tuple(sender_addr, receiver_addr): list(chunkhash: bytes)
-get_chunkhash_list_dict = dict()
+get_chunkhash_list_dict = dict() # Tuple(sender_addr, receiver_addr): list(chunkhash: bytes)
 
-received_chunk_list_dict = dict()  # used for sorting chunks in select retransmit
+received_chunk_list_dict = dict() # used for sorting chunks in select retransmit
 
-pkt_time_stamp_dict = dict()  # used for calculating RTT, in chunkhash: start_time
+pkt_time_stamp_dict = dict() # used for calculating RTT, in chunkhash: start_time
 
-redundant_ack_dict = dict()  # redundant number of ack, if it == 3, fast retransmit
-# indicate that corresponding chunk is in transfer, in chunkhash: Tuple(sender_addr, receiver_addr)
-connections = dict()
+redundant_ack_dict = dict() # redundant number of ack, if it == 3, fast retransmit
+
+connections = dict() # indicate that corresponding chunk is in transfer, in chunkhash: Tuple(sender_addr, receiver_addr)
 
 # only used in sender
-smallest_ack_dict = dict()  # the smallest Ack in header
-# the biggest Ack received in header. Not always equal to smallest_ack
-biggest_ack_dict = dict()
+smallest_ack_dict = dict() # the smallest Ack in header
+biggest_ack_dict = dict() # the biggest Ack received in header. Not always equal to smallest_ack
 # only used in receiver
-smallest_seq_dict = dict()  # the smallest Seq in header
-# the biggest Seq received in header. Not always equal to smallest_seq
-biggest_seq_dict = dict()
-if_seq_in_order_dict = dict()  # the flag for ordering Seq
+smallest_seq_dict = dict() # the smallest Seq in header
+biggest_seq_dict = dict() # the biggest Seq received in header. Not always equal to smallest_seq
+if_seq_in_order_dict = dict() # the flag for ordering Seq
 
 # used for time out
 estimated_rtt_dict = dict()
 dev_rtt_dict = dict()
 timeout_interval_dict = dict()
 
-# used for congestion control, need to modify
+# used for congestion control
 cwnd = dict()
 ssthresh = dict()
-status = dict()
+status = dict() # show what status it is now. 1 for slow start, 2 for congestion avoidance, 3 for fast recovery
 
 # ------------ notes ------------
 # Ack & Seq in the header are better not to change. They are different from what we learnt in course
@@ -312,8 +307,9 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
                 get_header = struct.pack("!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunkhash), 0, 0)
                 get_pkt = get_header + get_chunkhash
                 sock.sendto(get_pkt, from_addr)
-            else:
+            else: # disconnect
                 connections.pop(ex_downloading_chunkhash)
+
 
 def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
     global config
@@ -366,14 +362,15 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
         connections[get_chunkhash] = key
         ex_sending_chunkhash_dict[key] = bytes.hex(get_chunkhash)
         # send back DATA
-        # send 5 pkt at one time
-        cwnd[key], ssthresh[key], status[key] = 1, 64, 1
-        flag = False  # if the file is smaller than 5 chunk, break
+        if cwnd.get(key) is None: # if it did not connect before, initialize; else, keep the old one.
+            cwnd[key], ssthresh[key], status[key] = 1, 64, 1
+            estimated_rtt_dict[key], dev_rtt_dict[key], timeout_interval_dict[key] = 0.95, 0.05, 1.0
+            
+        flag = False  # if the chunk is smaller than #math.floor(cwnd[key]+1) pkts, break
         smallest_ack_dict[key], redundant_ack_dict[key] = 0, 0
-        estimated_rtt_dict[key], dev_rtt_dict[key], timeout_interval_dict[key] = 0.95, 0.05, 1.0
         ex_sending_chunkhash = ex_sending_chunkhash_dict[key]
         pkt_time_stamp_dict[key] = dict()
-        for seq_num in range(1, math.floor(cwnd[key] + 1)): # seq_num = [1, ..., math.floor(cwnd[key] + 1)]
+        for seq_num in range(1, math.floor(cwnd[key]+1)): # seq_num = [1, ..., math.floor(cwnd[key]+1)]
             biggest_ack_dict[key] = seq_num
             left = (seq_num-1) * MAX_PAYLOAD
             right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
@@ -389,26 +386,23 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 break
     elif Type == 4:
         # received an ACK pkt
-        # adjust congestion window
-        if status[key] == 1:  # slow start
-            cwnd[key] += 1
-            if cwnd[key] >= ssthresh[key]:
-                status[key] = 2
-        elif status[key] == 2:  # congestion avoidance
-            cwnd[key] += (1 / cwnd[key])
-
         ack_num = Ack
+        
         # must process all retransmit then normally send DATA
         smallest_ack, biggest_ack, redundant_ack = smallest_ack_dict[key], biggest_ack_dict[key], redundant_ack_dict[key]
         ex_sending_chunkhash = ex_sending_chunkhash_dict[key]
-        if smallest_ack == ack_num:
+        if smallest_ack == ack_num: # reduplicate Ack
             redundant_ack += 1
+            
+            if status[key] == 3:
+                cwnd[key] += 1
             # fast retransmit
             if redundant_ack == 3:
-                ssthresh[key] = max(math.floor(cwnd[key] / 2), 2)
-                cwnd[key] = 1
-                if status[key] == 2:
-                    status[key] = 1
+                # with 3 redundant Ack, get into fast recovery
+                if status[key] == 1 or status[key] == 2:
+                    ssthresh[key] = max(math.floor(cwnd[key] / 2), 2.0)
+                    cwnd[key] = ssthresh[key] + 3
+                    
                 # no need to calculate RTT and time_interval for retransmit pkt
                 redundant_ack = 0  # clear redundant_ack
                 left = (ack_num) * MAX_PAYLOAD
@@ -420,6 +414,18 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
         else:
             smallest_ack = ack_num
             redundant_ack = 0  # clear redundant_ack
+            
+            # adjust congestion window
+            if status[key] == 1: # slow start
+                cwnd[key] += 1.0
+                if cwnd[key] >= ssthresh[key]:
+                    status[key] = 2
+            elif status[key] == 2: # congestion avoidance
+                cwnd[key] += (1 / cwnd[key])
+            elif status[key] == 3: # fast recovery
+                cwnd[key] = ssthresh[key]
+                status[key] = 2
+                
             # calculate RTT and time_interval
             start_time = pkt_time_stamp_dict[key].get((ex_sending_chunkhash, ack_num), -1)
             estimated_rtt, dev_rtt, timeout_interval = estimated_rtt_dict[key], dev_rtt_dict[key], timeout_interval_dict[key]
@@ -441,18 +447,16 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 pass
             else:
                 # continue sending DATA
-                flag = False  # if the file is smaller than 5 chunk, break
-                # seq_num = [+1, +2, +3, +4, +5]
-                for seq_num in range(ack_num+1, ack_num+math.floor(cwnd[key])+1):
+                flag = False  # if the chunk is smaller than #math.floor(cwnd[key])+1 pkts, break
+                pkt_time_stamp_dict[key] = dict()
+                for seq_num in range(ack_num+1, ack_num+math.floor(cwnd[key])+1): # seq_num = [+1,..., +math.floor(cwnd[key])+1]
                     biggest_ack = seq_num
                     left = (seq_num - 1) * MAX_PAYLOAD
                     right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
                     flag = (seq_num) * MAX_PAYLOAD >= CHUNK_DATA_SIZE
                     chunk_data = config.haschunks[ex_sending_chunkhash][left: right]
                     # start timer in sender
-                    pkt_time_stamp_dict[key] = dict()
-                    pkt_time_stamp_dict[key][(
-                        ex_sending_chunkhash, seq_num)] = time.time()
+                    pkt_time_stamp_dict[key][(ex_sending_chunkhash, seq_num)] = time.time()
                     # send next data
                     data_header = struct.pack("!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN + len(chunk_data), seq_num, 0)
                     data_pkt = data_header + chunk_data
