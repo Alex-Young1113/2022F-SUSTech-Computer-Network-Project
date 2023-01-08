@@ -158,7 +158,7 @@ def time_out_retransmission(sock, from_addr):
     if pkt_time_stamp == -1:
         return
     pkt_time_stamp_dict_keys = list(pkt_time_stamp.keys())
-    timeout_interval = timeout_interval_dict[key] if config.timeout is None else config.timeout
+    timeout_interval = timeout_interval_dict[key] if config.timeout == 0 else config.timeout
 
     for pkt_time_stamp_dict_key in pkt_time_stamp_dict_keys:
         if cur_time - pkt_time_stamp_dict[key][pkt_time_stamp_dict_key] > timeout_interval:
@@ -430,7 +430,7 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 estimated_rtt = 0.875 * estimated_rtt + 0.125 * sample_rtt
                 dev_rtt = 0.75 * dev_rtt + 0.25 * abs(estimated_rtt - sample_rtt)
                 timeout_interval = estimated_rtt + 4 * dev_rtt
-
+                timeout_interval = timeout_interval if config.timeout == 0 else config.timeout
                 estimated_rtt_dict[key], dev_rtt_dict[key], timeout_interval_dict[key] = estimated_rtt, dev_rtt, timeout_interval
 
             if (ack_num)*MAX_PAYLOAD >= CHUNK_DATA_SIZE:
