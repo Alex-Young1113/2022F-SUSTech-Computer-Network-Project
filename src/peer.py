@@ -312,7 +312,8 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
                 get_header = struct.pack("!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunkhash), 0, 0)
                 get_pkt = get_header + get_chunkhash
                 sock.sendto(get_pkt, from_addr)
-
+            else:
+                connections.pop(ex_downloading_chunkhash)
 
 def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
     global config
