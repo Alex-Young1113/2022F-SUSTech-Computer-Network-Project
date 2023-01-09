@@ -130,9 +130,12 @@ def process_download(sock: simsocket.SimSocket, chunkfile: str, outputfile: str)
         if int(p[0]) != config.identity:
             sender_addr = (p[1], int(p[2]))
             key = (sender_addr, receiver_addr)
+            # ------ 
+            # initialization
             ex_output_file_dict[key] = ex_output_file
             ex_received_chunk_dict[key] = ex_received_chunk
             estimated_rtt_dict[key], dev_rtt_dict[key], timeout_interval_dict[key] = 0.95, 0.05, 1.0
+            # ------
             sock.sendto(whohas_pkt, (p[1], int(p[2])))
 
 
@@ -176,7 +179,6 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         for i in range(num_of_chunkhash):
             chunkhash = data[i*20: i*20+20]
             get_chunkhash_list.append(chunkhash)
-
         if len(get_chunkhash_list) == 0:
             return
         
@@ -188,17 +190,23 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         # send back GET pkt
         if chunkhash_str not in connections or connections[chunkhash_str] == key:
             # if it has not built connection, then send back GET pkt
+            # ------
+            # initialization
             connections[chunkhash_str] = key
             ex_downloading_chunkhash_dict[key] = chunkhash_str
             smallest_seq_dict[key], biggest_seq_dict[key] = 0, 0
             if_seq_in_order_dict[key] = True
+            # ------
             get_header = struct.pack("!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunkhash), 0, 0)
             get_pkt = get_header + get_chunkhash
             sock.sendto(get_pkt, from_addr)
         else:
             # if it has built connection, then send back DENIED pkt
+            # ------
+            # remove records
             ex_output_file_dict.pop(key, None)
             ex_received_chunk_dict.pop(key, None)
+            # ------
             denied_pkt = struct.pack("!HBBHHII", 52305, 68, 5, HEADER_LEN, HEADER_LEN, 0, 0)
             sock.sendto(denied_pkt, from_addr)
     elif Type == 3:
@@ -207,7 +215,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         ex_downloading_chunkhash: str = ex_downloading_chunkhash_dict[key]
         smallest_seq, biggest_seq = smallest_seq_dict[key], biggest_seq_dict[key]
         if_seq_in_order: bool = if_seq_in_order_dict[key]
-        received_chunk_list = received_chunk_list_dict.get(key, dict())
+        received_chunk_list = received_chunk_list_dict.get(key, dict()) # if it has not been used, then there will not be a k-v pair. So return an empty dict 
 
         if smallest_seq == biggest_seq and Seq == smallest_seq+1:  # in order
             ex_received_chunk_dict[key][ex_downloading_chunkhash] += data
@@ -255,10 +263,12 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
             ack_num = biggest_seq
             smallest_seq = Seq  # can also be biggest_seq
 
+        # write back to the dict value
         smallest_seq_dict[key], biggest_seq_dict[key] = smallest_seq, biggest_seq
         if_seq_in_order_dict[key] = if_seq_in_order
         received_chunk_list_dict[key] = received_chunk_list
 
+        # SACK machanism
         top_len = min(MAX_PAYLOAD // 4, len(lost_pkt_seq))
         fmt_str = "!" + "I" * top_len
         ack_body = struct.pack(fmt_str, *lost_pkt_seq[:top_len])
@@ -281,13 +291,13 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
             success = ex_downloading_chunkhash == received_chunkhash_str
             print(f"Successful received: {success}")
             if success:
-                print("Congrats! You have completed the example!")
+                print("Congrats! You have completed downloading the chunk!")
             else:
-                print("Example fails. Please check the example files carefully.")
+                print("Download fails. Please check the example files carefully.")
                 
             # See if there exists next get_chunkhash
             if len(get_chunkhash_list_dict[key]) > 0:
-                # if there is, then send back GET
+                # if there is, then send back GET, continuing the connection
                 get_chunkhash = get_chunkhash_list_dict[key].pop(0)
                 chunkhash_str = bytes.hex(get_chunkhash)
                 connections[chunkhash_str] = key
@@ -342,8 +352,9 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
     if Type == 0:
         # received an WHOHAS pkt
         # see what chunk the sender has
+        # there may be many chunks that receiver needs and sender has
         ihave_chunkhash_list = list()  # list of bytes
-        whohas_chunk_list = list()
+        whohas_chunk_list = list() # list of str
         blen: int = plen - HEADER_LEN  # the body length
         num_of_chunkhash = blen // 20  # number of chunk hashes
         for i in range(num_of_chunkhash):
@@ -371,11 +382,13 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
             connections[ex_sending_chunkhash] = key
             ex_sending_chunkhash_dict[key] = ex_sending_chunkhash
             # send back DATA
+            # ------
+            # initialization
             if cwnd.get(key) is None: # if it did not connect before, initialize; else, keep the old one.
                 cwnd[key], ssthresh[key], status[key] = 1, 64, 1
                 estimated_rtt_dict[key], dev_rtt_dict[key], timeout_interval_dict[key] = 0.95, 0.05, 1.0
+            # ------
                 
-            flag = False  # if the chunk is smaller than #math.floor(cwnd[key]+1) pkts, break
             # ------
             # initialization
             smallest_ack_dict[key], redundant_ack_dict[key] = 0, 0
@@ -387,7 +400,6 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 biggest_ack_dict[key] = seq_num
                 left = (seq_num-1) * MAX_PAYLOAD
                 right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
-                flag = (seq_num) * MAX_PAYLOAD >= CHUNK_DATA_SIZE
                 chunk_data = config.haschunks[ex_sending_chunkhash][left: right]
                 # start timer in sender
                 pkt_time_stamp_dict[key][(ex_sending_chunkhash, seq_num)] = time.time()
@@ -396,7 +408,8 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 data_pkt = data_header + chunk_data
                 sock.sendto(data_pkt, from_addr)
                 pipe_list_dict[key].add(seq_num)
-                if flag: # already complete sending
+                if (seq_num) * MAX_PAYLOAD >= CHUNK_DATA_SIZE: # already complete sending
+                    # if the chunk is smaller than #math.floor(cwnd[key]+1) pkts, break
                     break
         else:
             denied_pkt = struct.pack("!HBBHHII", 52305, 68, 5, HEADER_LEN, HEADER_LEN, 0, 0)
@@ -535,7 +548,6 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                     sock.sendto(data_pkt, from_addr)
             else:
                 # continue sending DATA
-                flag = False  # if the chunk is smaller than #math.floor(cwnd[key])+1 pkts, break
                 pkt_time_stamp_dict[key] = dict()
                 seq_st = biggest_ack
                 upper_bound = seq_st+math.floor(cwnd[key])+1
@@ -543,7 +555,6 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                     biggest_ack = seq_num
                     left = (seq_num - 1) * MAX_PAYLOAD
                     right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
-                    flag = (seq_num) * MAX_PAYLOAD >= CHUNK_DATA_SIZE
                     chunk_data: bytes = config.haschunks[ex_sending_chunkhash][left: right]
                     # start timer in sender
                     pkt_time_stamp_dict[key][(ex_sending_chunkhash, seq_num)] = time.time()
@@ -552,7 +563,8 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                     data_pkt = data_header + chunk_data
                     sock.sendto(data_pkt, from_addr)
                     pipe_list_dict[key].add(seq_num)
-                    if flag: # already complete sending
+                    if (seq_num) * MAX_PAYLOAD >= CHUNK_DATA_SIZE: # already complete sending
+                        # if the chunk is smaller than #math.floor(cwnd[key])+1 pkts, break
                         break
         smallest_ack_dict[key], biggest_ack_dict[key], redundant_ack_dict[key] = smallest_ack, biggest_ack, redundant_ack
 
