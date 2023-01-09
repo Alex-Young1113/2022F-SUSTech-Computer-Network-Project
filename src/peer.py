@@ -96,6 +96,7 @@ def process_download(sock: simsocket.SimSocket, chunkfile: str, outputfile: str)
     global config
     global ex_output_file_dict
     global ex_received_chunk_dict
+    
     global estimated_rtt_dict
     global dev_rtt_dict
     global timeout_interval_dict
@@ -176,7 +177,12 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
             chunkhash = data[i*20: i*20+20]
             get_chunkhash_list.append(chunkhash)
 
+        if len(get_chunkhash_list) == 0:
+            return
+        
         get_chunkhash: bytes = get_chunkhash_list.pop(0)
+        if get_chunkhash is None:
+            return
         chunkhash_str = bytes.hex(get_chunkhash)
         get_chunkhash_list_dict[key] = get_chunkhash_list
         # send back GET pkt
@@ -191,8 +197,8 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
             sock.sendto(get_pkt, from_addr)
         else:
             # if it has built connection, then send back DENIED pkt
-            ex_output_file_dict.pop(key)
-            ex_received_chunk_dict.pop(key)
+            ex_output_file_dict.pop(key, None)
+            ex_received_chunk_dict.pop(key, None)
             denied_pkt = struct.pack("!HBBHHII", 52305, 68, 5, HEADER_LEN, HEADER_LEN, 0, 0)
             sock.sendto(denied_pkt, from_addr)
     elif Type == 3:
@@ -260,22 +266,13 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         ack_pkt = ack_header + ack_body
         sock.sendto(ack_pkt, from_addr)
 
-        # see if finished
         ex_received_chunk = ex_received_chunk_dict[key]
         ex_output_file = ex_output_file_dict[key]
+        # if finished downloading this chunk
         if len(ex_received_chunk[ex_downloading_chunkhash]) == CHUNK_DATA_SIZE:
-            # finished downloading this chunkdata!
-            # dump your received chunk to file in dict form using pickle
-            with open(ex_output_file, "wb") as wf:
-                pickle.dump(ex_received_chunk, wf)
-
             # add to this peer's haschunk:
             config.haschunks[ex_downloading_chunkhash] = ex_received_chunk[ex_downloading_chunkhash]
-
-            # you need to print "GOT" when finished downloading all chunks in a DOWNLOAD file
-            print(f"GOT {ex_output_file}")
-
-            # The following things are just for illustration, you do not need to print out in your design.
+             # The following things are just for illustration, you do not need to print out in your design.
             sha1 = hashlib.sha1()
             sha1.update(ex_received_chunk[ex_downloading_chunkhash])
             received_chunkhash_str = sha1.hexdigest()
@@ -287,7 +284,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
                 print("Congrats! You have completed the example!")
             else:
                 print("Example fails. Please check the example files carefully.")
-
+                
             # See if there exists next get_chunkhash
             if len(get_chunkhash_list_dict[key]) > 0:
                 # if there is, then send back GET
@@ -301,6 +298,21 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
                 sock.sendto(get_pkt, from_addr)
             else: # disconnect
                 connections.pop(ex_downloading_chunkhash, None)
+        
+        # if finished downloading all chunkdata
+        is_all_finished = True
+        for idx in ex_received_chunk:
+            if len(ex_received_chunk[idx]) != CHUNK_DATA_SIZE:
+                is_all_finished = False
+                break
+        if is_all_finished:
+            # finished downloading all chunkdata!
+            # dump your received chunk to file in dict form using pickle
+            with open(ex_output_file, "wb") as wf:
+                pickle.dump(ex_received_chunk, wf)
+
+            # you need to print "GOT" when finished downloading all chunks in a DOWNLOAD file
+            print(f"GOT {ex_output_file}")
 
 
 def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
