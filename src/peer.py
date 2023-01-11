@@ -371,6 +371,7 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
     elif Type == 2:
         # received a GET pkt
         # check if reached max connection
+ 
         if len(connections) < config.max_conn:
             get_chunkhash: bytes = data[:20]
             ex_sending_chunkhash: str = bytes.hex(get_chunkhash)
@@ -385,8 +386,9 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
             flag = False  # if the chunk is smaller than #math.floor(cwnd[key]+1) pkts, break
             # ------
             # initialization
-            cwnd_history[key] = [1]
+            cwnd_history[key] = []
             start_time[key] = time.time()
+            
             smallest_ack_dict[key], redundant_ack_dict[key] = 0, 0
             pkt_time_stamp_dict[key] = dict()
             pipe_list_dict[key] = set()
@@ -532,10 +534,11 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
 
             if (Ack)*MAX_PAYLOAD >= CHUNK_DATA_SIZE: 
                 # already complete sending
-                draw_cwnd_history(start_time[key], cwnd_history[key], str(key) + '.jpg')
+                
                 status[key] = 0
                 connections.pop(ex_sending_chunkhash, None)
                 # finished
+                # draw_cwnd_history(start_time[key], cwnd_history[key], './test.jpg')
                 print(f"finished sending {ex_sending_chunkhash}")
             elif plen > HEADER_LEN:
                 # if there are more pkt to retransmit
