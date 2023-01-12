@@ -610,7 +610,9 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 # continue sending DATA
                 pkt_time_stamp_dict[key] = dict()
                 seq_st = biggest_ack
-                smallest_unack = min(pipe_list_dict[key])
+                smallest_ack = 0
+                if(len(pipe_list_dict[key]) != 0):
+                    smallest_unack = min(pipe_list_dict[key])
                 # if there is free window size, then continue sending DATA pkt
 
                 # free_window_size = cwnd[key] - len(pipe_list_dict[key])
