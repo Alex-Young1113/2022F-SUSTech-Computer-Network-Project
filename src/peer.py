@@ -63,7 +63,7 @@ smallest_seq_dict = dict() # the smallest Seq in header
 biggest_seq_dict = dict() # the biggest Seq received in header. Not always equal to smallest_seq
 if_seq_in_order_dict = dict() # the flag for ordering Seq
 received_chunk_list_dict = dict() # used for sorting chunks in select retransmit
-finished_chunk_list_dict = dict() # the received chunks of one file, in chunkhash: bytes
+finished_chunk_list_dict = dict() # the received chunks of one file, in output_file:{chunkhash: bytes}
 
 # used for time out
 estimated_rtt_dict = dict()
@@ -96,12 +96,14 @@ def process_download(sock: simsocket.SimSocket, chunkfile: str, outputfile: str)
     global ex_output_file_dict
     global ex_received_chunk_dict
     global ex_downloading_chunkhash_dict
+    global finished_chunk_list_dict
     
     global estimated_rtt_dict
     global dev_rtt_dict
     global timeout_interval_dict
 
     ex_output_file = outputfile
+    finished_chunk_list_dict[ex_output_file] = dict()
     # Step 1: read chunkhash to be downloaded from chunkfile
     download_hash = bytes()
     ex_received_chunk = dict()
@@ -221,8 +223,11 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
             sock.sendto(denied_pkt, from_addr)
     elif Type == 3:
         # received a DATA pkt
-        last_recv_time_dict[key] = time.time()
         # guarantee that the chunk is sorted
+        if key not in ex_downloading_chunkhash_dict:
+            return
+        last_recv_time_dict[key] = time.time()
+        
         ex_downloading_chunkhash: str = ex_downloading_chunkhash_dict[key]
         smallest_seq, biggest_seq = smallest_seq_dict[key], biggest_seq_dict[key]
         if_seq_in_order: bool = if_seq_in_order_dict[key]
@@ -292,10 +297,11 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         # ------        
 
         ex_received_chunk = ex_received_chunk_dict[key]
+        ex_output_file = ex_output_file_dict[key]
         # if finished downloading this chunk
         if len(ex_received_chunk[ex_downloading_chunkhash]) == CHUNK_DATA_SIZE:
             # add to this peer's haschunk:
-            finished_chunk_list_dict[ex_downloading_chunkhash] = ex_received_chunk[ex_downloading_chunkhash]
+            finished_chunk_list_dict[ex_output_file][ex_downloading_chunkhash] = ex_received_chunk[ex_downloading_chunkhash]
             config.haschunks[ex_downloading_chunkhash] = ex_received_chunk[ex_downloading_chunkhash]
              # The following things are just for illustration, you do not need to print out in your design.
             sha1 = hashlib.sha1()
@@ -333,15 +339,14 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         
         # if finished downloading all chunkdata
         is_all_finished = False
-        for idx in finished_chunk_list_dict:
-            if len(finished_chunk_list_dict[idx]) == CHUNK_DATA_SIZE:
+        for idx in finished_chunk_list_dict[ex_output_file]:
+            if len(finished_chunk_list_dict[ex_output_file][idx]) == CHUNK_DATA_SIZE:
                 is_all_finished = True
         if is_all_finished:
             # finished downloading all chunkdata!
             # dump your received chunk to file in dict form using pickle
-            ex_output_file = ex_output_file_dict[key]
             with open(ex_output_file, "wb") as wf:
-                pickle.dump(finished_chunk_list_dict, wf)
+                pickle.dump(finished_chunk_list_dict[ex_output_file], wf)
 
             # you need to print "GOT" when finished downloading all chunks in a DOWNLOAD file
             print(f"GOT {ex_output_file}")
@@ -439,6 +444,9 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
             sock.sendto(denied_pkt, from_addr)
     elif Type == 4:
         # received an ACK pkt
+        if key not in ex_sending_chunkhash_dict:
+            return
+        
         last_recv_time_dict[key] = time.time()
         smallest_ack, biggest_ack, redundant_ack = smallest_ack_dict[key], biggest_ack_dict[key], redundant_ack_dict[key]
         timeout_interval = timeout_interval_dict[key] if config.timeout == 0 else config.timeout
