@@ -309,6 +309,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         # ------
         # initialization
         last_recv_time_dict[key] = time.time()
+        pkt_time_stamp_dict[key] = time.time()
         # ------
 
         ex_received_chunk = ex_received_chunk_dict[key]
