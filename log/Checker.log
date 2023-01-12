@@ -5,694 +5,694 @@ New queue added to 1: 3000000/0.1/max(1000000) to 2
 Creating new router 3
 New queue added to 3: 3000000/0.5/max(1000000) to 1
 New queue added to 1: 3000000/0.5/max(1000000) to 3
-Listening on 40180...
+Listening on 35181...
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520807.51997 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520807.62011
+Router 1: recv pkt at 1673521501.46357 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521501.5637
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520807.52026 dest for 127.0.0.1:48003 (node '3')
-Enqueued packet bound for 3, 1673520808.0204
-Router 2: recv pkt at 1673520807.62038 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521501.46389 dest for 127.0.0.1:48003 (node '3')
+Enqueued packet bound for 3, 1673521501.96403
+Router 2: recv pkt at 1673521501.56387 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520807.62095 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520807.72109
-Router 1: recv pkt at 1673520807.72133 dest for 127.0.0.1:48001 (node '1')
+Router 2: recv pkt at 1673521501.56427 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521501.66441
+Router 1: recv pkt at 1673521501.66455 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520807.72241 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520807.82255
-Router 2: recv pkt at 1673520807.82278 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521501.66488 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521501.76502
+Router 2: recv pkt at 1673521501.76523 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520807.82387 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520807.92668
-Router 1: recv pkt at 1673520807.92687 dest for 127.0.0.1:48001 (node '1')
+Router 2: recv pkt at 1673521501.76625 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521501.86907
+Router 1: recv pkt at 1673521501.86932 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520807.92736 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.02744
-Router 3: recv pkt at 1673520808.02056 dest for 127.0.0.1:48003 (node '3')
+Router 1: recv pkt at 1673521501.87015 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521501.97023
+Router 3: recv pkt at 1673521501.96421 dest for 127.0.0.1:48003 (node '3')
 Sending packet from router 3 to 127.0.0.1:48003
 spiffy_header nodeID: 3
-Router 3: recv pkt at 1673520808.02116 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.52129
-Router 2: recv pkt at 1673520808.02755 dest for 127.0.0.1:48002 (node '2')
+Router 3: recv pkt at 1673521501.9649 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.46504
+Router 2: recv pkt at 1673521501.97034 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.02798 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.1308
+Router 2: recv pkt at 1673521501.97089 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.07371
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.02806 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.13369
-Router 1: recv pkt at 1673520808.13102 dest for 127.0.0.1:48001 (node '1')
+Router 2: recv pkt at 1673521501.971 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.07663
+Router 1: recv pkt at 1673521502.07393 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.1321 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.23218
-Router 1: recv pkt at 1673520808.13385 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.07433 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.17441
+Router 1: recv pkt at 1673521502.07671 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.13501 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.23518
-Router 2: recv pkt at 1673520808.23236 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.07701 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.17718
+Router 2: recv pkt at 1673521502.1746 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.23294 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.33575
+Router 2: recv pkt at 1673521502.17553 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.27835
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.23304 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.33868
+Router 2: recv pkt at 1673521502.17582 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.28145
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.23313 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.34158
-Router 2: recv pkt at 1673520808.23527 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.176 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.28445
+Router 2: recv pkt at 1673521502.17732 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.23564 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.34691
+Router 2: recv pkt at 1673521502.17816 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.28942
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.23569 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.34977
+Router 2: recv pkt at 1673521502.17842 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.2925
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.23572 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.35262
+Router 2: recv pkt at 1673521502.17856 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.29546
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.23575 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.35547
-Router 1: recv pkt at 1673520808.3359 dest for 127.0.0.1:48001 (node '1')
+Router 2: recv pkt at 1673521502.1787 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.29841
+Router 1: recv pkt at 1673521502.27853 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.33629 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.43637
-Router 1: recv pkt at 1673520808.3388 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.27905 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.37913
+Router 1: recv pkt at 1673521502.28154 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.33907 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.43924
-Router 1: recv pkt at 1673520808.34173 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.28184 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.38201
+Router 1: recv pkt at 1673521502.28452 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.34198 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.44223
-Router 1: recv pkt at 1673520808.347 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.2848 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.38505
+Router 1: recv pkt at 1673521502.28957 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.34739 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.44773
-Router 1: recv pkt at 1673520808.34988 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.2905 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.39084
+Router 1: recv pkt at 1673521502.29267 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.35011 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.45053
-Router 1: recv pkt at 1673520808.35283 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.29355 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.39397
+Router 1: recv pkt at 1673521502.29561 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.35325 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.45376
-Router 1: recv pkt at 1673520808.35555 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.29654 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.39706
+Router 1: recv pkt at 1673521502.29856 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.35585 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.45645
-Router 2: recv pkt at 1673520808.43653 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.2994 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.39999
+Router 2: recv pkt at 1673521502.3793 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.43745 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.54027
+Router 2: recv pkt at 1673521502.38 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.48282
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.43758 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.54321
+Router 2: recv pkt at 1673521502.38013 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.48576
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.43768 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.54612
+Router 2: recv pkt at 1673521502.38026 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.4887
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.43776 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.54903
+Router 2: recv pkt at 1673521502.38038 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.49164
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.43786 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.55194
-Router 2: recv pkt at 1673520808.43932 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.38061 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.49469
+Router 2: recv pkt at 1673521502.38212 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.43982 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.55671
+Router 2: recv pkt at 1673521502.38261 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.49951
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.43994 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.55965
+Router 2: recv pkt at 1673521502.38273 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.50245
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44002 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.56255
+Router 2: recv pkt at 1673521502.38283 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.50536
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44011 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.56545
+Router 2: recv pkt at 1673521502.38294 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.50828
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44019 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.56835
+Router 2: recv pkt at 1673521502.38306 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.51122
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44038 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.57136
-Router 2: recv pkt at 1673520808.44233 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.38327 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.51424
+Router 2: recv pkt at 1673521502.38513 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44281 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.57661
+Router 2: recv pkt at 1673521502.38536 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.51915
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44292 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.57952
+Router 2: recv pkt at 1673521502.38541 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.52202
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44301 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.58243
+Router 2: recv pkt at 1673521502.38545 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.52487
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44306 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.5853
+Router 2: recv pkt at 1673521502.3855 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.52774
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44327 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.58833
+Router 2: recv pkt at 1673521502.38555 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.5306
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44334 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.59121
+Router 2: recv pkt at 1673521502.38559 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.53346
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44344 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.59413
-Router 2: recv pkt at 1673520808.44781 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.38563 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.53632
+Router 2: recv pkt at 1673521502.39092 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44835 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.60185
+Router 2: recv pkt at 1673521502.39137 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.54487
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44843 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.60475
+Router 2: recv pkt at 1673521502.39146 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.54778
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.4485 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.60764
+Router 2: recv pkt at 1673521502.39154 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.55067
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44858 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.61053
+Router 2: recv pkt at 1673521502.39157 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.55352
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44876 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.61353
+Router 2: recv pkt at 1673521502.3916 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.55637
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44883 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.61642
+Router 2: recv pkt at 1673521502.39164 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.55923
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.44887 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.61927
+Router 2: recv pkt at 1673521502.39178 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.56218
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.4489 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.62212
-Router 2: recv pkt at 1673520808.4506 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.39185 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.56506
+Router 2: recv pkt at 1673521502.39405 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45088 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.62691
+Router 2: recv pkt at 1673521502.39429 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.57032
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45091 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.62976
+Router 2: recv pkt at 1673521502.39435 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.57319
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45099 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.63266
+Router 2: recv pkt at 1673521502.39439 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.57605
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45103 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.63551
+Router 2: recv pkt at 1673521502.39443 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.57891
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45111 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.6384
+Router 2: recv pkt at 1673521502.39448 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.58177
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45114 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.64125
+Router 2: recv pkt at 1673521502.39452 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.58463
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45117 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.6441
+Router 2: recv pkt at 1673521502.39456 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.58749
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.4512 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.64695
+Router 2: recv pkt at 1673521502.3946 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.59035
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45124 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.6498
-Router 2: recv pkt at 1673520808.45383 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.39464 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.5932
+Router 2: recv pkt at 1673521502.39716 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45411 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.65549
+Router 2: recv pkt at 1673521502.39749 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.59887
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45418 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.65837
+Router 2: recv pkt at 1673521502.39754 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.60174
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45427 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.66128
+Router 2: recv pkt at 1673521502.39759 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.6046
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45434 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.66416
+Router 2: recv pkt at 1673521502.39763 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.60746
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.4544 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.66704
+Router 2: recv pkt at 1673521502.39769 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.61033
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45446 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.66992
+Router 2: recv pkt at 1673521502.39773 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.61318
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.4545 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.67278
+Router 2: recv pkt at 1673521502.39777 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.61605
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45454 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.67563
+Router 2: recv pkt at 1673521502.39782 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.61891
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45458 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.67848
+Router 2: recv pkt at 1673521502.39786 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.62177
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45463 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.68135
-Router 2: recv pkt at 1673520808.45651 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.3979 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.62462
+Router 2: recv pkt at 1673521502.40006 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45669 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.68622
+Router 2: recv pkt at 1673521502.40025 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.62979
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45673 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.68908
+Router 2: recv pkt at 1673521502.4003 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.63265
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45677 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.69193
+Router 2: recv pkt at 1673521502.40035 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.63552
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.4568 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.69479
+Router 2: recv pkt at 1673521502.40039 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.63838
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45684 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.69764
+Router 2: recv pkt at 1673521502.40045 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.64125
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45688 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.70049
+Router 2: recv pkt at 1673521502.40049 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.64411
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45692 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.70335
+Router 2: recv pkt at 1673521502.40053 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.64697
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45696 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.70621
+Router 2: recv pkt at 1673521502.40058 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.64982
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45699 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.70906
+Router 2: recv pkt at 1673521502.40062 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.65268
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45703 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.71191
+Router 2: recv pkt at 1673521502.40066 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.65554
 spiffy_header nodeID: 2
-Router 2: recv pkt at 1673520808.45708 dest for 127.0.0.1:48001 (node '1')
-Enqueued packet bound for 1, 1673520808.71478
-Router 1: recv pkt at 1673520808.52145 dest for 127.0.0.1:48001 (node '1')
+Router 2: recv pkt at 1673521502.4007 dest for 127.0.0.1:48001 (node '1')
+Enqueued packet bound for 1, 1673521502.6584
+Router 1: recv pkt at 1673521502.46526 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.52221 dest for 127.0.0.1:48003 (node '3')
-Enqueued packet bound for 3, 1673520809.0223
-Router 1: recv pkt at 1673520808.54045 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.46632 dest for 127.0.0.1:48003 (node '3')
+Enqueued packet bound for 3, 1673521502.9664
+Router 1: recv pkt at 1673521502.48305 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.54079 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.64087
-Router 1: recv pkt at 1673520808.5433 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.48415 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.58424
+Router 1: recv pkt at 1673521502.48591 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.54359 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.64376
-Router 1: recv pkt at 1673520808.5463 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.48674 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.58691
+Router 1: recv pkt at 1673521502.48885 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.54656 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.64681
-Router 1: recv pkt at 1673520808.54917 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.48964 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.58989
+Router 1: recv pkt at 1673521502.49176 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.55006 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.6504
-Router 1: recv pkt at 1673520808.55203 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.49232 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.59266
+Router 1: recv pkt at 1673521502.4948 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.55225 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.65268
-Router 1: recv pkt at 1673520808.55683 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.4953 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.59572
+Router 1: recv pkt at 1673521502.49963 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.55712 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.65763
-Router 1: recv pkt at 1673520808.55983 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.50026 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.60077
+Router 1: recv pkt at 1673521502.5026 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.56005 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.66065
-Router 1: recv pkt at 1673520808.56269 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.50311 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.60371
+Router 1: recv pkt at 1673521502.50547 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.56359 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.66427
-Router 1: recv pkt at 1673520808.56565 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.50595 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.60663
+Router 1: recv pkt at 1673521502.50838 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.56679 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.66756
-Router 1: recv pkt at 1673520808.56849 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.50893 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.6097
+Router 1: recv pkt at 1673521502.51135 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.56931 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.67016
-Router 1: recv pkt at 1673520808.57152 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.51185 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.6127
+Router 1: recv pkt at 1673521502.51432 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.57238 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.67331
-Router 1: recv pkt at 1673520808.57681 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.51462 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.61555
+Router 1: recv pkt at 1673521502.51933 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.57802 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.67904
-Router 1: recv pkt at 1673520808.5797 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.5203 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.62132
+Router 1: recv pkt at 1673521502.52218 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.58063 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.68174
-Router 1: recv pkt at 1673520808.58253 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.52311 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.62422
+Router 1: recv pkt at 1673521502.52503 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.58279 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.68398
-Router 1: recv pkt at 1673520808.58545 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.52591 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.6271
+Router 1: recv pkt at 1673521502.52786 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.58564 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.68692
-Router 1: recv pkt at 1673520808.5884 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.52872 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.63
+Router 1: recv pkt at 1673521502.53075 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.58855 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.68991
-Router 1: recv pkt at 1673520808.59128 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.53169 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.63306
+Router 1: recv pkt at 1673521502.53357 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.59154 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.69299
-Router 1: recv pkt at 1673520808.59434 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.5344 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.63585
+Router 1: recv pkt at 1673521502.53644 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.59531 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.69684
-Router 1: recv pkt at 1673520808.60205 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.53718 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.63872
+Router 1: recv pkt at 1673521502.54505 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.60322 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.70484
-Router 1: recv pkt at 1673520808.60498 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.54605 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.64767
+Router 1: recv pkt at 1673521502.54796 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.60604 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.70775
-Router 1: recv pkt at 1673520808.60783 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.54879 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.6505
+Router 1: recv pkt at 1673521502.55082 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.60872 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.71051
-Router 1: recv pkt at 1673520808.61068 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.55167 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.65346
+Router 1: recv pkt at 1673521502.55369 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.61167 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.71355
-Router 1: recv pkt at 1673520808.61369 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.55465 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.65653
+Router 1: recv pkt at 1673521502.55652 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.61463 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.7166
-Router 1: recv pkt at 1673520808.61658 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.55738 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.65935
+Router 1: recv pkt at 1673521502.55939 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.61749 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.71954
-Router 1: recv pkt at 1673520808.61942 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.5603 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.66234
+Router 1: recv pkt at 1673521502.56235 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.6204 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.72253
-Router 1: recv pkt at 1673520808.6223 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.56348 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.66562
+Router 1: recv pkt at 1673521502.56527 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.62337 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.72559
-Router 1: recv pkt at 1673520808.62707 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.56613 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.66835
+Router 1: recv pkt at 1673521502.57047 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.62798 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.73028
-Router 1: recv pkt at 1673520808.62991 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.57137 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.67367
+Router 1: recv pkt at 1673521502.57339 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.63084 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.73323
-Router 1: recv pkt at 1673520808.63282 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.57432 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.67671
+Router 1: recv pkt at 1673521502.57623 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.63374 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.73621
-Router 1: recv pkt at 1673520808.63567 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.57712 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.67959
+Router 1: recv pkt at 1673521502.57911 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.63659 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.73915
-Router 1: recv pkt at 1673520808.63856 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.58001 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.68257
+Router 1: recv pkt at 1673521502.58193 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.63949 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.74214
-Router 2: recv pkt at 1673520808.64103 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.58288 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.68552
+Router 2: recv pkt at 1673521502.58436 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.64137 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.58474 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.64227 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.74491
-Router 2: recv pkt at 1673520808.64392 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.58559 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.68824
+Router 2: recv pkt at 1673521502.58706 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.64422 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.58755 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.64506 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.7477
-Router 2: recv pkt at 1673520808.64696 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.58776 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.6904
+Router 2: recv pkt at 1673521502.59007 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.64714 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.59041 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.64785 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.75049
-Router 1: recv pkt at 1673520808.64993 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.5907 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.69335
+Router 2: recv pkt at 1673521502.59279 dest for 127.0.0.1:48002 (node '2')
+Sending packet from router 2 to 127.0.0.1:48002
+Router 1: recv pkt at 1673521502.59327 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.65046 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.75319
-Router 2: recv pkt at 1673520808.65049 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.59358 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.69622
+Router 2: recv pkt at 1673521502.59589 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.65275 dest for 127.0.0.1:48002 (node '2')
-Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.65556 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.59904 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.65579 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.75844
-Router 2: recv pkt at 1673520808.6577 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.59939 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.70204
+Router 2: recv pkt at 1673521502.60086 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.65843 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.60184 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.65866 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.76131
-Router 2: recv pkt at 1673520808.66072 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.60213 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.70477
+Router 2: recv pkt at 1673521502.60384 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.66134 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.60467 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.66154 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.76419
-Router 1: recv pkt at 1673520808.66423 dest for 127.0.0.1:48001 (node '1')
-Sending packet from router 1 to 127.0.0.1:48001
-Router 2: recv pkt at 1673520808.66437 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.60498 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.70762
+Router 2: recv pkt at 1673521502.60676 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.6644 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.76705
-Router 1: recv pkt at 1673520808.66711 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.60771 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.66727 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.77
-Router 2: recv pkt at 1673520808.66762 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.60812 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.71076
+Router 2: recv pkt at 1673521502.60982 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.66999 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.6104 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.67019 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.77292
-Router 2: recv pkt at 1673520808.67022 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.61075 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.7134
+Router 2: recv pkt at 1673521502.61284 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.67285 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.61329 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.67301 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.77574
-Router 2: recv pkt at 1673520808.67337 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.61357 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.71622
+Router 2: recv pkt at 1673521502.61568 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.67571 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.61615 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.67593 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.77866
-Router 1: recv pkt at 1673520808.67855 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.6165 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.71915
+Router 1: recv pkt at 1673521502.61912 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.6787 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.78152
-Router 2: recv pkt at 1673520808.6791 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.61956 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.72229
+Router 2: recv pkt at 1673521502.62149 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.68142 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.62184 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.68162 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.78444
-Router 2: recv pkt at 1673520808.68182 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.62223 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.72496
+Router 2: recv pkt at 1673521502.62432 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.68409 dest for 127.0.0.1:48002 (node '2')
-Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.68629 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.6247 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.68646 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.78919
-Router 2: recv pkt at 1673520808.68698 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.62504 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.72777
+Router 2: recv pkt at 1673521502.62719 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.68915 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.63003 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
-spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.68946 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.79219
-Router 2: recv pkt at 1673520808.68998 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.63022 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.692 dest for 127.0.0.1:48001 (node '1')
+spiffy_header nodeID: 1
+Router 1: recv pkt at 1673521502.63062 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.73326
+Router 1: recv pkt at 1673521502.63281 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.69231 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.79504
-Router 2: recv pkt at 1673520808.69305 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.6332 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.73594
+Router 2: recv pkt at 1673521502.63327 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.69485 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.63573 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
+Router 2: recv pkt at 1673521502.63609 dest for 127.0.0.1:48002 (node '2')
+Sending packet from router 2 to 127.0.0.1:48002
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.69504 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.79777
-Router 2: recv pkt at 1673520808.69691 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.63635 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.739
+Router 1: recv pkt at 1673521502.63848 dest for 127.0.0.1:48001 (node '1')
+Sending packet from router 1 to 127.0.0.1:48001
+Router 2: recv pkt at 1673521502.63891 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.69771 dest for 127.0.0.1:48001 (node '1')
+spiffy_header nodeID: 1
+Router 1: recv pkt at 1673521502.63904 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.74168
+Router 1: recv pkt at 1673521502.64141 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.69789 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.80062
-Router 1: recv pkt at 1673520808.70056 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.64212 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.74485
+Router 1: recv pkt at 1673521502.64423 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.70075 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.80357
-Router 1: recv pkt at 1673520808.70342 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.64482 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.74764
+Router 1: recv pkt at 1673521502.6471 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.70359 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.80649
-Router 2: recv pkt at 1673520808.70493 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.64783 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.75073
+Router 2: recv pkt at 1673521502.64795 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.70627 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.64999 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
-spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.70648 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.80938
-Router 2: recv pkt at 1673520808.70787 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.65095 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.70914 dest for 127.0.0.1:48001 (node '1')
+spiffy_header nodeID: 1
+Router 1: recv pkt at 1673521502.65126 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.75408
+Router 1: recv pkt at 1673521502.65283 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.70941 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.81231
-Router 2: recv pkt at 1673520808.71057 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.65391 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.75681
+Router 2: recv pkt at 1673521502.65409 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.71198 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.65568 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.71232 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.81522
-Router 2: recv pkt at 1673520808.71362 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.65671 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.75961
+Router 2: recv pkt at 1673521502.65687 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 1: recv pkt at 1673520808.71488 dest for 127.0.0.1:48001 (node '1')
+Router 1: recv pkt at 1673521502.65853 dest for 127.0.0.1:48001 (node '1')
 Sending packet from router 1 to 127.0.0.1:48001
 spiffy_header nodeID: 1
-Router 1: recv pkt at 1673520808.71528 dest for 127.0.0.1:48002 (node '2')
-Enqueued packet bound for 2, 1673520808.81818
-Router 2: recv pkt at 1673520808.71666 dest for 127.0.0.1:48002 (node '2')
+Router 1: recv pkt at 1673521502.65918 dest for 127.0.0.1:48002 (node '2')
+Enqueued packet bound for 2, 1673521502.76209
+Router 2: recv pkt at 1673521502.65941 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.71965 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.66246 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.72264 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.66579 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.72574 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.66851 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.73039 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.6738 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.73341 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.67687 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.73635 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.67979 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.73936 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.68284 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.7425 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.68584 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.74535 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.68847 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.74803 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.69051 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.75082 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.69352 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.7535 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.6964 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.75885 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.70225 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.76166 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.70497 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.76457 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.70782 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.76733 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.71102 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.7703 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.71359 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.77323 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.7164 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.77613 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.71951 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.77899 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.72258 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.78196 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.72529 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.7848 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.72809 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.78957 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.73363 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.79251 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.73632 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.79546 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.73945 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.79811 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.74205 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.80108 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.74527 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.80398 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.748 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.80693 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.75115 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.80967 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.75446 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.81265 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.75722 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.8156 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.7599 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 2: recv pkt at 1673520808.81859 dest for 127.0.0.1:48002 (node '2')
+Router 2: recv pkt at 1673521502.76246 dest for 127.0.0.1:48002 (node '2')
 Sending packet from router 2 to 127.0.0.1:48002
-Router 3: recv pkt at 1673520809.02262 dest for 127.0.0.1:48003 (node '3')
+Router 3: recv pkt at 1673521502.9667 dest for 127.0.0.1:48003 (node '3')
 Sending packet from router 3 to 127.0.0.1:48003

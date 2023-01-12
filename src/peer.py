@@ -770,7 +770,11 @@ def peer_run(config):
                 # No pkt nor input arrives during this period
                 pass
     except KeyboardInterrupt:
-        pass
+        sock.add_log('quit')
+
+    except Exception as ex:
+        sock.add_log(str(ex))
+        sock.add_log(str(traceback.format_exc()))
     finally:
         sock.close()
 
