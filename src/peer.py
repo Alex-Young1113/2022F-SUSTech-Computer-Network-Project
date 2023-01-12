@@ -405,6 +405,7 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
     global ssthresh
     global status
 
+    global already_acked
     global download_start_time
     sender_addr = (config.ip, config.port)
     key = (sender_addr, from_addr)
@@ -610,7 +611,7 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 # continue sending DATA
                 pkt_time_stamp_dict[key] = dict()
                 seq_st = biggest_ack
-                smallest_ack = 0
+                smallest_unack = 0
                 if(len(pipe_list_dict[key]) != 0):
                     smallest_unack = min(pipe_list_dict[key])
                 # if there is free window size, then continue sending DATA pkt
