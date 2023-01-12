@@ -1,23 +1,94 @@
-2023-01-12 21:53:50,661 -+- PEER2_LOGGER -+- INFO -+- Start logging
-2023-01-12 21:53:50,663 -+- PEER2_LOGGER -+- INFO -+- Network simulator activated, running at ('127.0.0.1', 49367).
-2023-01-12 21:53:51,592 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type0 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack0, pkt_len36
-2023-01-12 21:53:51,593 -+- PEER2_LOGGER -+- DEBUG -+- sending a type1 pkt to ('127.0.0.1', 48001) via spiffy, seq0, ack0, pkt_len36
-2023-01-12 21:53:51,595 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type2 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack0, pkt_len36
-2023-01-12 21:53:51,595 -+- PEER2_LOGGER -+- INFO -+- cwnd 2.1457672119140625e-06 1
-2023-01-12 21:53:51,595 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq1, ack0, pkt_len1040
-2023-01-12 21:53:51,598 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack1, pkt_len16
-2023-01-12 21:53:51,598 -+- PEER2_LOGGER -+- INFO -+- cwnd 0.0031740665435791016 2.0
-2023-01-12 21:53:51,599 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq2, ack0, pkt_len1040
-2023-01-12 21:53:51,599 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq3, ack0, pkt_len1040
-2023-01-12 21:53:51,601 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack2, pkt_len16
-2023-01-12 21:53:51,602 -+- PEER2_LOGGER -+- INFO -+- 'float' object is not subscriptable
-2023-01-12 21:53:51,602 -+- PEER2_LOGGER -+- INFO -+- Traceback (most recent call last):
-  File "/home/faccoco/Desktop/Lessons/CS305/2022F-SUSTech-Computer-Network-Project/src/peer.py", line 798, in peer_run
-    process_inbound_udp(sock)
-  File "/home/faccoco/Desktop/Lessons/CS305/2022F-SUSTech-Computer-Network-Project/src/peer.py", line 180, in process_inbound_udp
-    process_sender(sock, from_addr, Type, data, plen, Ack)
-  File "/home/faccoco/Desktop/Lessons/CS305/2022F-SUSTech-Computer-Network-Project/src/peer.py", line 551, in process_sender
-    start_time[key]) + ' ' + str(cwnd[key]))
-TypeError: 'float' object is not subscriptable
-
-2023-01-12 21:53:51,602 -+- PEER2_LOGGER -+- INFO -+- socket closed
+2023-01-12 22:39:26,986 -+- PEER2_LOGGER -+- INFO -+- Start logging
+2023-01-12 22:39:26,987 -+- PEER2_LOGGER -+- INFO -+- Network simulator activated, running at ('127.0.0.1', 40271).
+2023-01-12 22:39:29,057 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type0 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack0, pkt_len36
+2023-01-12 22:39:29,058 -+- PEER2_LOGGER -+- DEBUG -+- sending a type1 pkt to ('127.0.0.1', 48001) via spiffy, seq0, ack0, pkt_len36
+2023-01-12 22:39:29,259 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type2 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack0, pkt_len36
+2023-01-12 22:39:29,260 -+- PEER2_LOGGER -+- INFO -+- cwnd 3.0994415283203125e-06 1
+2023-01-12 22:39:29,260 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq1, ack0, pkt_len1040
+2023-01-12 22:39:29,465 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack1, pkt_len16
+2023-01-12 22:39:29,465 -+- PEER2_LOGGER -+- INFO -+- cwnd 0.20565056800842285 2.0
+2023-01-12 22:39:29,466 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq2, ack0, pkt_len1040
+2023-01-12 22:39:29,466 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq3, ack0, pkt_len1040
+2023-01-12 22:39:29,671 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack2, pkt_len16
+2023-01-12 22:39:29,682 -+- PEER2_LOGGER -+- INFO -+- cwnd 0.4223756790161133 3.0
+2023-01-12 22:39:29,682 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq4, ack0, pkt_len1040
+2023-01-12 22:39:29,683 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq5, ack0, pkt_len1040
+2023-01-12 22:39:29,683 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq6, ack0, pkt_len1040
+2023-01-12 22:39:29,683 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack3, pkt_len16
+2023-01-12 22:39:29,684 -+- PEER2_LOGGER -+- INFO -+- cwnd 0.4240078926086426 4.0
+2023-01-12 22:39:29,684 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq7, ack0, pkt_len1040
+2023-01-12 22:39:29,684 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq8, ack0, pkt_len1040
+2023-01-12 22:39:29,684 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq9, ack0, pkt_len1040
+2023-01-12 22:39:29,685 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq10, ack0, pkt_len1040
+2023-01-12 22:39:29,888 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack4, pkt_len16
+2023-01-12 22:39:29,888 -+- PEER2_LOGGER -+- INFO -+- cwnd 0.6282038688659668 5.0
+2023-01-12 22:39:29,888 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq11, ack0, pkt_len1040
+2023-01-12 22:39:29,888 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq12, ack0, pkt_len1040
+2023-01-12 22:39:29,889 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq13, ack0, pkt_len1040
+2023-01-12 22:39:29,889 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq14, ack0, pkt_len1040
+2023-01-12 22:39:29,889 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq15, ack0, pkt_len1040
+2023-01-12 22:39:29,890 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack5, pkt_len16
+2023-01-12 22:39:29,890 -+- PEER2_LOGGER -+- INFO -+- cwnd 0.6308693885803223 6.0
+2023-01-12 22:39:29,891 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq16, ack0, pkt_len1040
+2023-01-12 22:39:29,891 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq17, ack0, pkt_len1040
+2023-01-12 22:39:29,891 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq18, ack0, pkt_len1040
+2023-01-12 22:39:29,892 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq19, ack0, pkt_len1040
+2023-01-12 22:39:29,892 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq20, ack0, pkt_len1040
+2023-01-12 22:39:29,892 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq21, ack0, pkt_len1040
+2023-01-12 22:39:29,893 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack6, pkt_len16
+2023-01-12 22:39:29,894 -+- PEER2_LOGGER -+- INFO -+- cwnd 0.6339695453643799 7.0
+2023-01-12 22:39:29,894 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq22, ack0, pkt_len1040
+2023-01-12 22:39:29,894 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq23, ack0, pkt_len1040
+2023-01-12 22:39:29,894 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq24, ack0, pkt_len1040
+2023-01-12 22:39:29,894 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq25, ack0, pkt_len1040
+2023-01-12 22:39:29,894 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq26, ack0, pkt_len1040
+2023-01-12 22:39:29,894 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq27, ack0, pkt_len1040
+2023-01-12 22:39:29,894 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq28, ack0, pkt_len1040
+2023-01-12 22:39:29,897 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack7, pkt_len16
+2023-01-12 22:39:29,897 -+- PEER2_LOGGER -+- INFO -+- cwnd 0.6376280784606934 8.0
+2023-01-12 22:39:29,897 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq29, ack0, pkt_len1040
+2023-01-12 22:39:29,897 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq30, ack0, pkt_len1040
+2023-01-12 22:39:29,897 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq31, ack0, pkt_len1040
+2023-01-12 22:39:29,897 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq32, ack0, pkt_len1040
+2023-01-12 22:39:29,897 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq33, ack0, pkt_len1040
+2023-01-12 22:39:29,898 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq34, ack0, pkt_len1040
+2023-01-12 22:39:29,898 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq35, ack0, pkt_len1040
+2023-01-12 22:39:29,898 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq36, ack0, pkt_len1040
+2023-01-12 22:39:29,901 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack8, pkt_len16
+2023-01-12 22:39:29,901 -+- PEER2_LOGGER -+- INFO -+- cwnd 0.6411967277526855 9.0
+2023-01-12 22:39:29,901 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq37, ack0, pkt_len1040
+2023-01-12 22:39:29,901 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq38, ack0, pkt_len1040
+2023-01-12 22:39:29,901 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq39, ack0, pkt_len1040
+2023-01-12 22:39:29,901 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq40, ack0, pkt_len1040
+2023-01-12 22:39:29,901 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq41, ack0, pkt_len1040
+2023-01-12 22:39:29,901 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq42, ack0, pkt_len1040
+2023-01-12 22:39:29,901 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq43, ack0, pkt_len1040
+2023-01-12 22:39:29,901 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq44, ack0, pkt_len1040
+2023-01-12 22:39:29,901 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq45, ack0, pkt_len1040
+2023-01-12 22:39:29,904 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack9, pkt_len16
+2023-01-12 22:39:29,904 -+- PEER2_LOGGER -+- INFO -+- cwnd 0.6444027423858643 10.0
+2023-01-12 22:39:29,904 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq46, ack0, pkt_len1040
+2023-01-12 22:39:29,904 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq47, ack0, pkt_len1040
+2023-01-12 22:39:29,904 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq48, ack0, pkt_len1040
+2023-01-12 22:39:29,904 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq49, ack0, pkt_len1040
+2023-01-12 22:39:29,904 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq50, ack0, pkt_len1040
+2023-01-12 22:39:29,904 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq51, ack0, pkt_len1040
+2023-01-12 22:39:29,904 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq52, ack0, pkt_len1040
+2023-01-12 22:39:29,904 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq53, ack0, pkt_len1040
+2023-01-12 22:39:29,904 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq54, ack0, pkt_len1040
+2023-01-12 22:39:29,905 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq55, ack0, pkt_len1040
+2023-01-12 22:39:29,907 -+- PEER2_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack10, pkt_len16
+2023-01-12 22:39:29,907 -+- PEER2_LOGGER -+- INFO -+- cwnd 0.6473932266235352 11.0
+2023-01-12 22:39:29,907 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq56, ack0, pkt_len1040
+2023-01-12 22:39:29,907 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq57, ack0, pkt_len1040
+2023-01-12 22:39:29,907 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq58, ack0, pkt_len1040
+2023-01-12 22:39:29,907 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq59, ack0, pkt_len1040
+2023-01-12 22:39:29,907 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq60, ack0, pkt_len1040
+2023-01-12 22:39:29,907 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq61, ack0, pkt_len1040
+2023-01-12 22:39:29,908 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq62, ack0, pkt_len1040
+2023-01-12 22:39:29,908 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq63, ack0, pkt_len1040
+2023-01-12 22:39:29,908 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq64, ack0, pkt_len1040
+2023-01-12 22:39:29,908 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq65, ack0, pkt_len1040
+2023-01-12 22:39:29,908 -+- PEER2_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48001) via spiffy, seq66, ack0, pkt_len1040
+2023-01-12 22:39:29,956 -+- PEER2_LOGGER -+- INFO -+- quit
+2023-01-12 22:39:29,956 -+- PEER2_LOGGER -+- INFO -+- socket closed
