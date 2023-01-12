@@ -63,6 +63,7 @@ smallest_seq_dict = dict() # the smallest Seq in header
 biggest_seq_dict = dict() # the biggest Seq received in header. Not always equal to smallest_seq
 if_seq_in_order_dict = dict() # the flag for ordering Seq
 received_chunk_list_dict = dict() # used for sorting chunks in select retransmit
+finished_chunk_list_dict = dict() # the received chunks of one file, in chunkhash: bytes
 
 # used for time out
 estimated_rtt_dict = dict()
@@ -172,6 +173,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
     global if_seq_in_order_dict
 
     global received_chunk_list_dict
+    global finished_chunk_list_dict
 
     receiver_addr = (config.ip, config.port)
     key = (from_addr, receiver_addr)
@@ -270,7 +272,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
                 smallest_seq = biggest_seq
         else:  # normal
             ack_num = biggest_seq
-            smallest_seq = Seq  # can also be biggest_seq
+            smallest_seq = biggest_seq
 
         # write back to the dict value
         smallest_seq_dict[key], biggest_seq_dict[key] = smallest_seq, biggest_seq
@@ -293,6 +295,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         # if finished downloading this chunk
         if len(ex_received_chunk[ex_downloading_chunkhash]) == CHUNK_DATA_SIZE:
             # add to this peer's haschunk:
+            finished_chunk_list_dict[ex_downloading_chunkhash] = ex_received_chunk[ex_downloading_chunkhash]
             config.haschunks[ex_downloading_chunkhash] = ex_received_chunk[ex_downloading_chunkhash]
              # The following things are just for illustration, you do not need to print out in your design.
             sha1 = hashlib.sha1()
@@ -329,17 +332,16 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
                 last_recv_time_dict.pop(key, None)
         
         # if finished downloading all chunkdata
-        is_all_finished = True
-        for idx in ex_received_chunk:
-            if len(ex_received_chunk[idx]) != CHUNK_DATA_SIZE:
-                is_all_finished = False
-                break
+        is_all_finished = False
+        for idx in finished_chunk_list_dict:
+            if len(finished_chunk_list_dict[idx]) == CHUNK_DATA_SIZE:
+                is_all_finished = True
         if is_all_finished:
             # finished downloading all chunkdata!
             # dump your received chunk to file in dict form using pickle
             ex_output_file = ex_output_file_dict[key]
             with open(ex_output_file, "wb") as wf:
-                pickle.dump(ex_received_chunk, wf)
+                pickle.dump(finished_chunk_list_dict, wf)
 
             # you need to print "GOT" when finished downloading all chunks in a DOWNLOAD file
             print(f"GOT {ex_output_file}")
