@@ -1,3 +1,4 @@
+# bibibibi
 import time
 import math
 import pickle
@@ -231,7 +232,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
             ex_downloading_chunkhash_dict[key] = chunkhash_str
             smallest_seq_dict[key], biggest_seq_dict[key] = 0, 0
             if_seq_in_order_dict[key] = True
-            already_acked[key] = []
+            
             # ------
             get_header = struct.pack(
                 "!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunkhash), 0, 0)
@@ -458,6 +459,7 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
             download_start_time[key] = time.time()
             sock.add_log('cwnd ' + str(time.time() -
                          download_start_time[key]) + ' ' + str(cwnd[key]))
+            already_acked[key] = []
             # ------
             upper_bound = math.floor(cwnd[key]+1)
             # seq_num = [1, ..., math.floor(cwnd[key]+1)]
