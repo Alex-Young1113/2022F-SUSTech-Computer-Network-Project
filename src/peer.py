@@ -232,7 +232,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
             ex_downloading_chunkhash_dict[key] = chunkhash_str
             smallest_seq_dict[key], biggest_seq_dict[key] = 0, 0
             if_seq_in_order_dict[key] = True
-            
+
             # ------
             get_header = struct.pack(
                 "!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunkhash), 0, 0)
@@ -458,8 +458,8 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
             pkt_time_stamp_dict[key] = dict()
             pipe_list_dict[key] = set()
             download_start_time[key] = time.time()
-            sock.add_log('cwnd ' + str(time.time() -
-                         download_start_time[key]) + ' ' + str(cwnd[key]))
+            # sock.add_log('cwnd ' + str(time.time() -
+            #              download_start_time[key]) + ' ' + str(cwnd[key]))
             already_acked[key] = []
             # ------
             upper_bound = math.floor(cwnd[key]+1)
@@ -507,16 +507,16 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
 
             if status[key] == 3:
                 cwnd[key] += 1
-                sock.add_log('cwnd ' + str(time.time() -
-                             download_start_time[key]) + ' ' + str(cwnd[key]))
+                # sock.add_log('cwnd ' + str(time.time() -
+                #              download_start_time[key]) + ' ' + str(cwnd[key]))
             # fast retransmit
             if redundant_ack == 3:
                 # with 3 redundant Ack, get into fast recovery
                 if status[key] == 1 or status[key] == 2:
                     ssthresh[key] = max(math.floor(cwnd[key] / 2), 2.0)
                     cwnd[key] = ssthresh[key] + 3
-                    sock.add_log('cwnd ' + str(time.time() -
-                                 download_start_time[key]) + ' ' + str(cwnd[key]))
+                    # sock.add_log('cwnd ' + str(time.time() -
+                    #              download_start_time[key]) + ' ' + str(cwnd[key]))
                     status[key] = 3
 
                 # no need to calculate RTT and time_interval for retransmit pkt
@@ -553,16 +553,16 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
             # adjust congestion window
             if status[key] == 1:  # slow start
                 cwnd[key] += 1.0
-                sock.add_log('cwnd ' + str(time.time() -
-                             download_start_time[key]) + ' ' + str(cwnd[key]))
+                # sock.add_log('cwnd ' + str(time.time() -
+                #              download_start_time[key]) + ' ' + str(cwnd[key]))
                 if cwnd[key] >= ssthresh[key]:
                     status[key] = 2
             elif status[key] == 2:  # congestion avoidance
                 cwnd[key] += (1 / cwnd[key])
             elif status[key] == 3:  # fast recovery
                 cwnd[key] = ssthresh[key]
-                sock.add_log('cwnd ' + str(time.time() -
-                             download_start_time[key]) + ' ' + str(cwnd[key]))
+                # sock.add_log('cwnd ' + str(time.time() -
+                #              download_start_time[key]) + ' ' + str(cwnd[key]))
                 status[key] = 2
 
             # calculate RTT and time_interval
@@ -611,8 +611,8 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 # continue sending DATA
                 pkt_time_stamp_dict[key] = dict()
                 seq_st = biggest_ack
-                smallest_unack = 0
-                if(len(pipe_list_dict[key]) != 0):
+                smallest_unack = Ack + 1
+                if (len(pipe_list_dict[key]) != 0):
                     smallest_unack = min(pipe_list_dict[key])
                 # if there is free window size, then continue sending DATA pkt
 
@@ -637,7 +637,7 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
 
                 upper_bound = seq_st+math.floor(cwnd[key]) + 1
                 # seq_num = [+1,..., +free_window_size+1]
-                for seq_num in range(smallest_unack, smallest_unack + cwnd[key]):
+                for seq_num in range(smallest_unack, smallest_unack + math.floor(cwnd[key]) + 1):
                     if seq_num in pipe_list_dict[key] or seq_num in already_acked[key]:
                         continue
                     biggest_ack = seq_num
@@ -737,21 +737,21 @@ def time_out_retransmission(sock: simsocket.SimSocket, from_addr):
                     if status[key] == 1:  # slow start
                         ssthresh[key] = max(math.floor(cwnd[key] / 2), 2.0)
                         cwnd[key] = 1
-                        sock.add_log('cwnd ' + str(time.time() -
-                                                   download_start_time[key]) + ' ' + str(cwnd[key]))
+                        # sock.add_log('cwnd ' + str(time.time() -
+                        #                            download_start_time[key]) + ' ' + str(cwnd[key]))
                         redundant_ack_dict[key] = 0
                     elif status[key] == 2:  # congestion avoidance
                         ssthresh[key] = max(math.floor(cwnd[key] / 2), 2.0)
                         cwnd[key] = 1
-                        sock.add_log('cwnd ' + str(time.time() -
-                                                   download_start_time[key]) + ' ' + str(cwnd[key]))
+                        # sock.add_log('cwnd ' + str(time.time() -
+                        #                            download_start_time[key]) + ' ' + str(cwnd[key]))
                         redundant_ack_dict[key] = 0
                         status[key] = 1
                     elif status[key] == 3:  # fast recovery
                         ssthresh[key] = max(math.floor(cwnd[key] / 2), 2.0)
                         cwnd[key] = 1
-                        sock.add_log('cwnd ' + str(time.time() -
-                                     download_start_time[key]) + ' ' + str(cwnd[key]))
+                        # sock.add_log('cwnd ' + str(time.time() -
+                        #              download_start_time[key]) + ' ' + str(cwnd[key]))
                         redundant_ack_dict[key] = 0
                         status[key] = 1
         else:  # as receiver
