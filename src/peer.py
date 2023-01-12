@@ -154,6 +154,10 @@ def process_download(sock: simsocket.SimSocket, chunkfile: str, outputfile: str)
                 sock.sendto(whohas_pkt, (p[1], int(p[2])))
 
 
+def reSendWhohas():
+    pass
+
+
 def process_inbound_udp(sock: simsocket.SimSocket):
     # Receive pkt
     pkt, from_addr = sock.recvfrom(BUF_SIZE)
@@ -668,6 +672,8 @@ def time_out_retransmission(sock: simsocket.SimSocket, from_addr):
                 if ex_sending_chunkhash is None:
                     continue
                 connections.pop(ex_sending_chunkhash, None)
+                ex_downloading_chunkhash_dict.pop(key, None)
+                pkt_time_stamp_dict.pop(key, None)
                 last_recv_time_dict.pop(key, None)
 
             # check the time stamps
@@ -720,32 +726,9 @@ def time_out_retransmission(sock: simsocket.SimSocket, from_addr):
                 connections.pop(ex_downloading_chunkhash, None)
                 last_recv_time_dict.pop(key, None)
                 pkt_time_stamp_dict.pop(key, None)
-                ex_received_chunk_dict
 
                 # TODO:发送WHOHAS
                 process_download(sock, chunkfile, outputfile)
-                # ex_downloading_chunkhash_hash = bytes.fromhex(
-                #     ex_downloading_chunkhash)
-
-                # whohas_header = struct.pack(
-                #     "!HBBHHII", 52305, 68, 0, HEADER_LEN, HEADER_LEN+len(ex_downloading_chunkhash_hash), 0, 0)
-                # whohas_pkt = whohas_header + ex_downloading_chunkhash_hash
-
-                # peer_list = config.peers
-                # receiver_addr = (config.ip, config.port)
-                # for p in peer_list:  # p[0], p[1], p[2]: nodeid, hostname, port
-                #     if int(p[0]) != config.identity:
-                #         sender_addr = (p[1], int(p[2]))
-                #         # ------
-                #         # initialization
-                #         key_new = (sender_addr, receiver_addr)
-                #         ex_output_file_dict[key_new] = ex_output_file_dict[key]
-                #         ex_received_chunk_dict[key_new] = ex_received_chunk_dict[key]
-                #         estimated_rtt_dict[key_new], dev_rtt_dict[key_new], timeout_interval_dict[key_new] = 0.95, 0.05, 1.0
-                #         # ------
-                #         sock.add_log(ex_downloading_chunkhash)
-                #         sock.sendto(whohas_pkt, sender_addr)
-                #         # no need to process normal time out as receiver
 
 
 def process_user_input(sock):
@@ -762,6 +745,13 @@ def peer_run(config):
 
     try:
         while True:
+
+            for chunk_hash in list(connections.keys()):
+                (sender_addr, receiver_addr) = connections.get(chunk_hash)
+                # every time when receive pkt, check if time out
+                from_addr = sender_addr if receiver_addr == addr else receiver_addr
+                time_out_retransmission(sock, from_addr)
+
             ready = select.select([sock, sys.stdin], [], [], 0.1)
             read_ready = ready[0]
             if len(read_ready) > 0:
