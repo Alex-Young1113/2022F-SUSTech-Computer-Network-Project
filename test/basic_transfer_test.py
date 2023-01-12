@@ -41,8 +41,8 @@ def drop_session():
 
     stime = time.time()
     drop_session = grader.GradingSession(grader.drop_handler, latency=0.01)
-    drop_session.add_peer(1, "src/peer.py", "test/tmp2/nodes2.map", "test/tmp2/data1.fragment", 1, ("127.0.0.1", 48001))
-    drop_session.add_peer(2, "src/peer.py", "test/tmp2/nodes2.map", "test/tmp2/data2.fragment", 1, ("127.0.0.1", 48002))
+    drop_session.add_peer(1, "src/peer.py", "test/tmp2/nodes2.map", "test/tmp2/data1.fragment", 1, ("127.0.0.1", 48001), timeout=10)
+    drop_session.add_peer(2, "src/peer.py", "test/tmp2/nodes2.map", "test/tmp2/data2.fragment", 1, ("127.0.0.1", 48002), timeout=10)
     drop_session.run_grader()
 
     drop_session.peer_list[("127.0.0.1", 48001)].send_cmd('''DOWNLOAD test/tmp2/download_target.chunkhash test/tmp2/download_result.fragment\n''')

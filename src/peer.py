@@ -637,6 +637,8 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
 
                 upper_bound = seq_st+math.floor(cwnd[key]) + 1
                 # seq_num = [+1,..., +free_window_size+1]
+                sock.add_log(str(smallest_unack) + ' ' +
+                             str(smallest_unack + math.floor(cwnd[key]) + 1))
                 for seq_num in range(smallest_unack, smallest_unack + math.floor(cwnd[key]) + 1):
                     if seq_num in pipe_list_dict[key] or seq_num in already_acked[key]:
                         continue
@@ -722,6 +724,7 @@ def time_out_retransmission(sock: simsocket.SimSocket, from_addr):
             for pkt_time_stamp_key in list(pkt_time_stamp.keys()):
                 start_time = pkt_time_stamp[pkt_time_stamp_key]
                 if cur_time - start_time > timeout_interval:  # normal time out
+                    sock.add_log('11111')
                     # timeout retransmit
                     pkt_time_stamp_dict[key].pop(pkt_time_stamp_key, None)
                     (chunkhash_str, seq_num) = pkt_time_stamp_key
