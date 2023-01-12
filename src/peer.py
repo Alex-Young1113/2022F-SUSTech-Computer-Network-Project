@@ -48,30 +48,16 @@ ex_sending_chunkhash_dict = dict() # Tuple(sender_addr, receiver_addr): chunkhas
 #   download 2 from B
 # ------
 get_chunkhash_list_dict = dict() # Tuple(sender_addr, receiver_addr): list(chunkhash: bytes)
-<<<<<<< Updated upstream
-
-received_chunk_list_dict = dict() # used for sorting chunks in select retransmit
-
-pkt_time_stamp_dict = dict() # used for calculating RTT, in chunkhash: start_time
-
-redundant_ack_dict = dict() # redundant number of ack, if it == 3, fast retransmit
-
-=======
->>>>>>> Stashed changes
 connections = dict() # indicate that corresponding chunk is in transfer, in chunkhash: Tuple(sender_addr, receiver_addr)
 last_recv_time_dict = dict() # different from pkt_time_stamp_dict, it is ued for crash
 
 # only used in sender
 smallest_ack_dict = dict() # the smallest Ack in header
 biggest_ack_dict = dict() # the biggest Ack received in header. Not always equal to smallest_ack
-<<<<<<< Updated upstream
-pipe_list_dict = dict() # record of having sent pkts, i.e., pkts of waiting for ACK
-=======
 pipe_list_dict = dict() # record of having sent pkts, i.e., pkts of waiting for ACK. dict of set
 pkt_time_stamp_dict = dict() # used for calculating RTT, in Tuple(sender_addr, receiver_addr):{(chunkhash, seq_num): start_time}
 redundant_ack_dict = dict() # redundant number of ack, if it == 3, fast retransmit
 
->>>>>>> Stashed changes
 # only used in receiver
 smallest_seq_dict = dict() # the smallest Seq in header
 biggest_seq_dict = dict() # the biggest Seq received in header. Not always equal to smallest_seq
@@ -119,7 +105,8 @@ def process_download(sock: simsocket.SimSocket, chunkfile: str, outputfile: str)
     download_hash = bytes()
     ex_received_chunk = dict()
     with open(chunkfile, 'r') as cf:
-        while line := cf.readline():
+        lines = cf.readlines()
+        for line in lines:
             index, datahash_str = line.strip().split(" ")
             ex_received_chunk[datahash_str] = bytes()
 
@@ -156,7 +143,7 @@ def process_download(sock: simsocket.SimSocket, chunkfile: str, outputfile: str)
                 sock.sendto(whohas_pkt, (p[1], int(p[2])))
 
 
-def process_inbound_udp(sock):
+def process_inbound_udp(sock: simsocket.SimSocket):
     # Receive pkt
     pkt, from_addr = sock.recvfrom(BUF_SIZE)
     Magic, Team, Type, hlen, plen, Seq, Ack = struct.unpack("!HBBHHII", pkt[:HEADER_LEN])
@@ -166,12 +153,8 @@ def process_inbound_udp(sock):
     elif Type in (0, 2, 4):
         process_sender(sock, from_addr, Type, data, plen, Ack)
 
-<<<<<<< Updated upstream
-    time_out_retransmission(sock, from_addr)
-=======
     # every time when receive pkt, check if time out
     # time_out_retransmission(sock, from_addr)
->>>>>>> Stashed changes
 
 
 def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq):
@@ -181,10 +164,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
 
     global get_chunkhash_list_dict
 
-<<<<<<< Updated upstream
-=======
     global last_recv_time_dict
->>>>>>> Stashed changes
     global connections
 
     global smallest_seq_dict
@@ -304,13 +284,10 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         ack_header = struct.pack("!HBBHHII", 52305, 68, 4, HEADER_LEN, HEADER_LEN+len(ack_body), 0, ack_num)
         ack_pkt = ack_header + ack_body
         sock.sendto(ack_pkt, from_addr)
-<<<<<<< Updated upstream
-=======
         # ------
         # initialization
         last_recv_time_dict[key] = time.time()
         # ------        
->>>>>>> Stashed changes
 
         ex_received_chunk = ex_received_chunk_dict[key]
         # if finished downloading this chunk
@@ -347,12 +324,9 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
                 sock.sendto(get_pkt, from_addr)
             else: # disconnect
                 connections.pop(ex_downloading_chunkhash, None)
-<<<<<<< Updated upstream
-=======
                 ex_downloading_chunkhash_dict.pop(key, None)
                 pkt_time_stamp_dict.pop(key, None)
                 last_recv_time_dict.pop(key, None)
->>>>>>> Stashed changes
         
         # if finished downloading all chunkdata
         is_all_finished = True
@@ -467,40 +441,6 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
         smallest_ack, biggest_ack, redundant_ack = smallest_ack_dict[key], biggest_ack_dict[key], redundant_ack_dict[key]
         timeout_interval = timeout_interval_dict[key] if config.timeout == 0 else config.timeout
         
-        # caculate for time out
-        pkt_time_stamp: dict = pkt_time_stamp_dict[key]
-        pkt_time_stamp_keys = pkt_time_stamp.keys()
-        for idx in pkt_time_stamp_keys:
-            ex_sending_chunkhash, ack_num = idx
-            if ack_num == Ack:
-                continue
-            start_time = pkt_time_stamp[idx]
-            end_time = time.time()
-            if end_time - start_time > timeout_interval:
-                pkt_time_stamp_dict[key].pop(idx, None)
-                
-                left = (ack_num) * MAX_PAYLOAD
-                right = min((ack_num + 1) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
-                chunk_data = config.haschunks[ex_sending_chunkhash][left: right]
-                data_header = struct.pack("!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN+len(chunk_data), ack_num+1, 0)
-                data_pkt = data_header + chunk_data
-                sock.sendto(data_pkt, from_addr)
-                
-                if status[key] == 1: # slow start
-                    ssthresh[key] = max(math.floor(cwnd[key] / 2), 2.0)
-                    cwnd[key] = 1
-                    redundant_ack_dict[key] = 0
-                elif status[key] == 2: # congestion avoidance
-                    ssthresh[key] = max(math.floor(cwnd[key] / 2), 2.0)
-                    cwnd[key] = 1
-                    redundant_ack_dict[key] = 0
-                    status[key] = 1
-                elif status[key] == 3: # fast recovery
-                    ssthresh[key] = max(math.floor(cwnd[key] / 2), 2.0)
-                    cwnd[key] = 1
-                    redundant_ack_dict[key] = 0
-                    status[key] = 1
-        
         if Ack in pipe_list_dict[key]:
             # remove the pkt of waiting for Ack from pipe_list
             pipe_list_dict[key].remove(Ack)
@@ -601,12 +541,10 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                     sock.sendto(data_pkt, from_addr)
             else:
                 # continue sending DATA
+                if biggest_ack >= 512: # a chunk only has 512 pkt at most
+                    return
                 pkt_time_stamp_dict[key] = dict()
                 seq_st = biggest_ack
-<<<<<<< Updated upstream
-                upper_bound = seq_st+math.floor(cwnd[key])+1
-                for seq_num in range(seq_st+1, upper_bound): # seq_num = [+1,..., +math.floor(cwnd[key])+1]
-=======
                 # if there is free window size, then continue sending DATA pkt
                 # free_window_size = math.floor(cwnd[key] - len(pipe_list_dict[key]))
                 # if free_window_size > 0:
@@ -627,7 +565,6 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 #             break
                 upper_bound = min(seq_st+math.floor(cwnd[key]), 512) + 1
                 for seq_num in range(seq_st+1, upper_bound): # seq_num = [+1,..., +free_window_size+1]
->>>>>>> Stashed changes
                     biggest_ack = seq_num
                     left = (seq_num - 1) * MAX_PAYLOAD
                     right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
@@ -644,27 +581,78 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
         smallest_ack_dict[key], biggest_ack_dict[key], redundant_ack_dict[key] = smallest_ack, biggest_ack, redundant_ack
 
 
-def time_out_retransmission(sock, from_addr):
+def time_out_retransmission(sock: simsocket.SimSocket, from_addr):
+    global ex_sending_chunkhash_dict
+    global ex_downloading_chunkhash_dict
+    
     global pkt_time_stamp_dict
+    global connections
     global timeout_interval_dict
+    
+    global cwnd
+    global ssthresh
+    global status
+    
     cur_time = time.time()
-    key = ((config.ip, config.port), from_addr)
-    pkt_time_stamp = pkt_time_stamp_dict.get(key, -1)
-    if pkt_time_stamp == -1:
-        return
-    pkt_time_stamp_dict_keys = list(pkt_time_stamp.keys())
-    timeout_interval = timeout_interval_dict[key] if config.timeout == 0 else config.timeout
+    self_addr = (config.ip, config.port)
+    keys = [(self_addr, from_addr), (from_addr, self_addr)] # [as sender, as receiver]
+    
+    for idx, key in enumerate(keys):
+        # Tuple(sender_addr, receiver_addr):{(chunkhash, seq_num): start_time} as sender,
+        # Tuple(sender_addr, receiver_addr): start_time as receiver
+        pkt_time_stamp = pkt_time_stamp_dict.get(key, -1)
+        if pkt_time_stamp == -1:
+            return
+        
+        timeout_interval = timeout_interval_dict[key] if config.timeout == 0 else config.timeout
 
-    for pkt_time_stamp_dict_key in pkt_time_stamp_dict_keys:
-        if cur_time - pkt_time_stamp_dict[key][pkt_time_stamp_dict_key] > timeout_interval:
-            (chunk_hash, seq_num) = pkt_time_stamp_dict_key
-            left = (seq_num - 1) * MAX_PAYLOAD
-            right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
-            chunk_data = config.haschunks[chunk_hash][left: right]
-            data_header = struct.pack("!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN + len(chunk_data), seq_num, 0)
-            data_pkt = data_header + chunk_data
-            sock.sendto(data_pkt, from_addr)
-            
+        # check the time stamps
+        if idx == 0: # as sender
+            # pkt_time_stamp = {(chunkhash, seq_num): start_time}
+            for pkt_time_stamp_key in pkt_time_stamp:
+                start_time = pkt_time_stamp[pkt_time_stamp_key]
+                if cur_time - start_time > 4 * timeout_interval: # peer is crash
+                    ex_sending_chunkhash: str = ex_sending_chunkhash_dict.get(key[0], None)
+                    if ex_sending_chunkhash is None:
+                        continue
+                    connections.pop(ex_sending_chunkhash, None)
+                    pass
+                elif cur_time - start_time > timeout_interval: # normal time out
+                    # timeout retransmit
+                    pkt_time_stamp_dict[key].pop(pkt_time_stamp_key, None)
+                    (chunkhash_str, seq_num) = pkt_time_stamp_key
+                        
+                    left = (seq_num - 1) * MAX_PAYLOAD
+                    right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
+                    chunk_data = config.haschunks[chunkhash_str][left: right]
+                    data_header = struct.pack("!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN+len(chunk_data), seq_num, 0)
+                    data_pkt = data_header + chunk_data
+                    sock.sendto(data_pkt, from_addr)
+                    
+                    if status[key] == 1: # slow start
+                        ssthresh[key] = max(math.floor(cwnd[key] / 2), 2.0)
+                        cwnd[key] = 1
+                        redundant_ack_dict[key] = 0
+                    elif status[key] == 2: # congestion avoidance
+                        ssthresh[key] = max(math.floor(cwnd[key] / 2), 2.0)
+                        cwnd[key] = 1
+                        redundant_ack_dict[key] = 0
+                        status[key] = 1
+                    elif status[key] == 3: # fast recovery
+                        ssthresh[key] = max(math.floor(cwnd[key] / 2), 2.0)
+                        cwnd[key] = 1
+                        redundant_ack_dict[key] = 0
+                        status[key] = 1
+        else: # as receiver
+            # pkt_time_stamp = start_time
+            if cur_time - start_time > 4 * timeout_interval: # peer is crash
+                ex_downloading_chunkhash: str = ex_downloading_chunkhash_dict.get(key[0], None)
+                if ex_sending_chunkhash is None:
+                        pass
+                connections.pop(ex_downloading_chunkhash, None)
+                pass
+            #  no need to process normal time out as receiver
+                    
             
 def process_user_input(sock):
     command, chunkf, outf = input().split(' ')
