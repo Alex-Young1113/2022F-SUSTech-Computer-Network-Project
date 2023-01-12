@@ -10,6 +10,7 @@ import util.simsocket as simsocket
 import select
 import sys
 import os
+import traceback
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 """
@@ -96,6 +97,9 @@ status = dict()  # show what status it is now. 1 for slow start, 2 for congestio
 #
 # -------------------------------
 
+chunkfile: str
+outputfile: str
+
 
 def process_download(sock: simsocket.SimSocket, chunkfile: str, outputfile: str):
     '''
@@ -168,9 +172,6 @@ def process_inbound_udp(sock: simsocket.SimSocket):
         process_receiver(sock, from_addr, Type, data, plen, Seq)
     elif Type in (0, 2, 4):
         process_sender(sock, from_addr, Type, data, plen, Ack)
-
-    # every time when receive pkt, check if time out
-    time_out_retransmission(sock, from_addr)
 
 
 def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq):
@@ -728,12 +729,18 @@ def time_out_retransmission(sock: simsocket.SimSocket, from_addr):
                 pkt_time_stamp_dict.pop(key, None)
 
                 # TODO:发送WHOHAS
+                global chunkfile
+                global outputfile
                 process_download(sock, chunkfile, outputfile)
 
 
 def process_user_input(sock):
     command, chunkf, outf = input().split(' ')
     if command == 'DOWNLOAD':
+        global chunkfile
+        global outputfile
+        chunkfile = chunkf
+        outputfile = outf
         process_download(sock, chunkf, outf)
     else:
         pass
