@@ -514,8 +514,6 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
             # remove the pkt of waiting for Ack from pipe_list
             if ack <= Ack:
                 pipe_list_dict[key].remove(ack)
-                pkt_time_stamp_dict.pop(
-                    (ex_sending_chunkhash_dict[key], Ack), None)
 
         # must process all retransmit then normally send DATA
         ex_sending_chunkhash: str = ex_sending_chunkhash_dict[key]
