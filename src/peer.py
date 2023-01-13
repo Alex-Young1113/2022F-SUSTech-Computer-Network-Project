@@ -336,7 +336,10 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
 
         ex_received_chunk = ex_received_chunk_dict[key]
         ex_output_file = ex_output_file_dict[key]
+
         # if finished downloading this chunk
+        sock.add_log(str(
+            len(ex_received_chunk[ex_downloading_chunkhash])) + ' ' + str(CHUNK_DATA_SIZE))
         if len(ex_received_chunk[ex_downloading_chunkhash]) == CHUNK_DATA_SIZE:
             # add to this peer's haschunk:
             finished_chunk_list_dict[ex_output_file][ex_downloading_chunkhash] = ex_received_chunk[ex_downloading_chunkhash]
@@ -479,15 +482,15 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 left = (seq_num-1) * MAX_PAYLOAD
                 right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
                 chunk_data = config.haschunks[ex_sending_chunkhash][left: right]
-                # start timer in sender
-                pkt_time_stamp_dict[key][(
-                    ex_sending_chunkhash, seq_num)] = time.time()
                 # with Seq = 1 in header
                 data_header = struct.pack(
                     "!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN+len(chunk_data), seq_num, 0)
                 data_pkt = data_header + chunk_data
                 sock.sendto(data_pkt, from_addr)
                 pipe_list_dict[key].add(seq_num)
+                # start timer in sender
+                pkt_time_stamp_dict[key][(
+                    ex_sending_chunkhash, seq_num)] = time.time()
                 if (seq_num) * MAX_PAYLOAD >= CHUNK_DATA_SIZE:  # already complete sending
                     # if the chunk is smaller than #math.floor(cwnd[key]+1) pkts, break
                     break
@@ -507,13 +510,12 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
 
         pipe_list_copy = pipe_list_dict[key].copy()
 
-        if Ack in pipe_list_copy:
-            # remove the pkt of waiting for Ack from pipe_list
-            pipe_list_dict[key].remove(Ack)
-
         for ack in pipe_list_copy:
-            if ack < Ack:
+            # remove the pkt of waiting for Ack from pipe_list
+            if ack <= Ack:
                 pipe_list_dict[key].remove(ack)
+                pkt_time_stamp_dict.pop(
+                    (ex_sending_chunkhash_dict[key], Ack), None)
 
         # must process all retransmit then normally send DATA
         ex_sending_chunkhash: str = ex_sending_chunkhash_dict[key]
@@ -663,15 +665,15 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                     left = (seq_num - 1) * MAX_PAYLOAD
                     right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
                     chunk_data: bytes = config.haschunks[ex_sending_chunkhash][left: right]
-                    # start timer in sender
-                    pkt_time_stamp_dict[key][(
-                        ex_sending_chunkhash, seq_num)] = time.time()
                     # send next data
                     data_header = struct.pack(
                         "!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN + len(chunk_data), seq_num, 0)
                     data_pkt = data_header + chunk_data
                     sock.sendto(data_pkt, from_addr)
                     pipe_list_dict[key].add(seq_num)
+                    # start timer in sender
+                    pkt_time_stamp_dict[key][(
+                        ex_sending_chunkhash, seq_num)] = time.time()
                     if (seq_num) * MAX_PAYLOAD >= CHUNK_DATA_SIZE:  # already complete sending
                         break
 
@@ -738,6 +740,8 @@ def time_out_retransmission(sock: simsocket.SimSocket, from_addr):
             # check the time stamps
             # pkt_time_stamp = {(chunkhash, seq_num): start_time}
             # 遍历所有尚未收到ack的包，检查是否有包超时，如果超时则重传一份
+            sock.add_log('pkt wait to check timeout ' +
+                         str(len(pkt_time_stamp.keys())) + ' ' + str(pkt_time_stamp.keys()))
             for pkt_time_stamp_key in list(pkt_time_stamp.keys()):
                 start_time = pkt_time_stamp[pkt_time_stamp_key]
 
