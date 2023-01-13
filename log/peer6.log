@@ -1,5 +1,0 @@
-2023-01-13 11:14:38,905 -+- PEER6_LOGGER -+- INFO -+- Start logging
-2023-01-13 11:14:38,905 -+- PEER6_LOGGER -+- INFO -+- Network simulator activated, running at ('127.0.0.1', 44698).
-2023-01-13 11:14:40,895 -+- PEER6_LOGGER -+- DEBUG -+- Receiving a type0 pkt from ('127.0.0.1', 48001) via spiffy, seq0, ack0, pkt_len36
-2023-01-13 11:14:50,883 -+- PEER6_LOGGER -+- INFO -+- quit
-2023-01-13 11:14:50,883 -+- PEER6_LOGGER -+- INFO -+- socket closed

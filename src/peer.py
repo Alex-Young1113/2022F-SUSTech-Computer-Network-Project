@@ -294,6 +294,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
                 if received_chunk_list.get(idx) is None:
                     if first:
                         ack_num = idx - 1
+                        lost_pkt_seq.append(idx-1)
                         first = False
                     else:
                         lost_pkt_seq.append(idx-1)
@@ -347,6 +348,8 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
             print(f"Successful received: {success}")
             if success:
                 print("Congrats! You have completed downloading the chunk!")
+                sock.add_log('Success download ' +
+                             str(ex_downloading_chunkhash))
             else:
                 print("Download fails. Please check the example files carefully.")
 
@@ -538,6 +541,7 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 data_header = struct.pack(
                     "!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN+len(chunk_data), Ack+1, 0)
                 data_pkt = data_header + chunk_data
+                sock.add_log(str(Ack) + ' redundanted, retransmit')
                 sock.sendto(data_pkt, from_addr)
 
                 # if there are more pkt to retransmit
@@ -602,6 +606,7 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 pkt_time_stamp_dict.pop(key, None)
                 # finished
                 print(f"finished sending {ex_sending_chunkhash}")
+                sock.add_log("finish sending")
             elif plen > HEADER_LEN:
                 # if there are more pkt to retransmit
                 blen = plen - HEADER_LEN
@@ -614,9 +619,10 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                     right = min((seq_num + 1) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
                     chunk_data = config.haschunks[ex_sending_chunkhash][left: right]
                     data_header = struct.pack(
-                        "!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN+len(chunk_data), seq_num+1, 0)
+                        "!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN+len(chunk_data), seq_num + 1, 0)
                     data_pkt = data_header + chunk_data
                     sock.sendto(data_pkt, from_addr)
+                    sock.add_log('unknow reason retransmit')
             else:
                 # continue sending DATA
                 pkt_time_stamp_dict[key] = dict()
@@ -627,16 +633,29 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
 
                 # if there is free window size, then continue sending DATA pkt
 
-                upper_bound = seq_st+math.floor(cwnd[key]) + 1
+                upper_bound = seq_st + math.floor(cwnd[key]) + 1
                 # seq_num = [+1,..., +free_window_size+1]
                 sock.add_log(str(smallest_unack) + ' ' +
                              str(smallest_unack + math.floor(cwnd[key]) + 1))
-                sock.add_log('unack number: ' + str(len(pipe_list_dict[key])))
+                sock.add_log(
+                    'unack number: ' + str(len(pipe_list_dict[key])) + ' ' + str(pipe_list_dict[key]))
                 sock.add_log('cwnd ' + str(time.time() -
                                            download_start_time[key]) + ' ' + str(cwnd[key]))
+
                 for seq_num in range(smallest_unack, smallest_unack + math.floor(cwnd[key]) + 1):
+
+                    # 确保seq_num不会超过512
+                    if seq_num > 512:
+                        break
+
+                    # sock.add_log(str(seq_num) + ' seq_num in pipe_list_dict[key]? ' + str(
+                    #     seq_num in pipe_list_dict[key]))
+                    # sock.add_log(
+                    #     ' seq_num in already_acked[key]: ' + str(seq_num in already_acked[key]))
+
                     if seq_num in pipe_list_dict[key] or seq_num in already_acked[key]:
                         continue
+
                     biggest_ack = seq_num
                     left = (seq_num - 1) * MAX_PAYLOAD
                     right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
@@ -690,7 +709,7 @@ def time_out_retransmission(sock: simsocket.SimSocket, from_addr):
 
         timeout_interval = timeout_interval_dict[key] if config.timeout == 0 else config.timeout
 
-        crash_time_interval = 4 * timeout_interval
+        crash_time_interval = 10
 
         # 无论是sender还是receiver， 收到包后last_recv_time_dict就会更新，且直到连接中断前不会pop
         # 因此，若last_recv_time_dict[key]为空，说明目前两个地址之间没有连接，可以直接结束函数以加快速度
@@ -721,7 +740,7 @@ def time_out_retransmission(sock: simsocket.SimSocket, from_addr):
 
                 if cur_time - start_time > timeout_interval:  # normal time out
                     # timeout retransmit
-                    pkt_time_stamp_dict[key].pop(pkt_time_stamp_key, None)
+                    pkt_time_stamp_dict[key][pkt_time_stamp_key] = time.time()
                     (chunkhash_str, seq_num) = pkt_time_stamp_key
 
                     left = (seq_num - 1) * MAX_PAYLOAD
@@ -730,8 +749,10 @@ def time_out_retransmission(sock: simsocket.SimSocket, from_addr):
                     data_header = struct.pack(
                         "!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN+len(chunk_data), seq_num, 0)
                     data_pkt = data_header + chunk_data
-                    sock.sendto(data_pkt, from_addr)
+                    sock.add_log(str(seq_num) +
+                                 ' timeout, it is retransmitted')
 
+                    sock.sendto(data_pkt, from_addr)
                     if status[key] == 1:  # slow start
                         ssthresh[key] = max(math.floor(cwnd[key] / 2), 2.0)
                         cwnd[key] = 1
