@@ -31161,3 +31161,394 @@ Router 6: recv pkt at 1673582282.31479 dest for 127.0.0.1:48004 (node '14')
 Enqueued packet bound for 8, 1673582282.41504
 Router 13: recv pkt at 1673582282.35618 dest for 127.0.0.1:48008 (node '13')
 Sending packet from router 13 to 127.0.0.1:48008
+Router 13: recv pkt at 1673582282.4 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+Router 8: recv pkt at 1673582282.41526 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 14, 1673582282.51552
+Router 13: recv pkt at 1673582282.44258 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582282.44294 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582282.94319
+Router 14: recv pkt at 1673582282.51571 dest for 127.0.0.1:48004 (node '14')
+Sending packet from router 14 to 127.0.0.1:48004
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582282.51615 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582282.6246
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582282.51623 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582282.63313
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582282.51629 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582282.64163
+Router 8: recv pkt at 1673582282.62482 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582282.73327
+Router 8: recv pkt at 1673582282.63337 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582282.75026
+Router 8: recv pkt at 1673582282.64185 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582282.76719
+Router 6: recv pkt at 1673582282.73354 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582282.84198
+Router 6: recv pkt at 1673582282.75078 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582282.86768
+Router 6: recv pkt at 1673582282.76784 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582282.89318
+Router 5: recv pkt at 1673582282.84219 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582282.95063
+Router 5: recv pkt at 1673582282.86799 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582282.98489
+Router 5: recv pkt at 1673582282.89356 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582283.01891
+Router 11: recv pkt at 1673582282.9436 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582283.04386
+Router 11: recv pkt at 1673582282.95124 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582283.45968
+Router 11: recv pkt at 1673582282.9855 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582283.50239
+Router 11: recv pkt at 1673582283.01941 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582283.54475
+Router 5: recv pkt at 1673582283.04404 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582283.1443
+Router 6: recv pkt at 1673582283.14445 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 8, 1673582283.24471
+Router 8: recv pkt at 1673582283.245 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 14, 1673582283.34526
+Router 14: recv pkt at 1673582283.34558 dest for 127.0.0.1:48004 (node '14')
+Sending packet from router 14 to 127.0.0.1:48004
+Router 13: recv pkt at 1673582283.46012 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582283.46173 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582283.96198
+Router 13: recv pkt at 1673582283.50277 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582283.50396 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582284.00447
+Router 13: recv pkt at 1673582283.54517 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582283.54642 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582284.04719
+Router 11: recv pkt at 1673582283.96249 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582284.06275
+Router 11: recv pkt at 1673582284.00467 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582284.10519
+Router 11: recv pkt at 1673582284.04739 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582284.14816
+Router 5: recv pkt at 1673582284.06296 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582284.16322
+Router 5: recv pkt at 1673582284.10539 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582284.2059
+Router 5: recv pkt at 1673582284.14854 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582284.24931
+Router 6: recv pkt at 1673582284.16346 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 8, 1673582284.26372
+Router 6: recv pkt at 1673582284.20644 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 8, 1673582284.30695
+Router 6: recv pkt at 1673582284.24986 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 8, 1673582284.35063
+Router 8: recv pkt at 1673582284.26397 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 14, 1673582284.36423
+Router 8: recv pkt at 1673582284.3075 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 14, 1673582284.40801
+Router 8: recv pkt at 1673582284.35107 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 14, 1673582284.45184
+Router 14: recv pkt at 1673582284.36434 dest for 127.0.0.1:48004 (node '14')
+Sending packet from router 14 to 127.0.0.1:48004
+Router 14: recv pkt at 1673582284.40821 dest for 127.0.0.1:48004 (node '14')
+Sending packet from router 14 to 127.0.0.1:48004
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582284.40857 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582284.51702
+Router 14: recv pkt at 1673582284.45197 dest for 127.0.0.1:48004 (node '14')
+Sending packet from router 14 to 127.0.0.1:48004
+Router 8: recv pkt at 1673582284.5173 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582284.62575
+Router 6: recv pkt at 1673582284.62607 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582284.73452
+Router 5: recv pkt at 1673582284.73482 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582284.84327
+Router 11: recv pkt at 1673582284.8436 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582285.35205
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582285.15444 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582285.26289
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582285.15487 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582285.27177
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582285.15521 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582285.28056
+Router 8: recv pkt at 1673582285.26331 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582285.37176
+Router 8: recv pkt at 1673582285.27235 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582285.38925
+Router 8: recv pkt at 1673582285.28126 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582285.4066
+Router 13: recv pkt at 1673582285.3525 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582285.35353 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582285.85378
+Router 6: recv pkt at 1673582285.37194 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582285.48038
+Router 6: recv pkt at 1673582285.38947 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582285.50637
+Router 6: recv pkt at 1673582285.40678 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582285.53212
+Router 5: recv pkt at 1673582285.48056 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582285.58901
+Router 5: recv pkt at 1673582285.50655 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582285.62345
+Router 5: recv pkt at 1673582285.53231 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582285.65766
+Router 11: recv pkt at 1673582285.5892 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582286.09764
+Router 11: recv pkt at 1673582285.62364 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582286.14053
+Router 11: recv pkt at 1673582285.65788 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582286.18322
+Router 11: recv pkt at 1673582285.85431 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582285.95456
+Router 5: recv pkt at 1673582285.95488 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582286.05514
+Router 6: recv pkt at 1673582286.05541 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 8, 1673582286.15567
+Router 13: recv pkt at 1673582286.09814 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+Router 13: recv pkt at 1673582286.14125 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+Router 8: recv pkt at 1673582286.15608 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 14, 1673582286.25633
+Router 13: recv pkt at 1673582286.18356 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582286.18479 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582286.68505
+Router 14: recv pkt at 1673582286.25682 dest for 127.0.0.1:48004 (node '14')
+Sending packet from router 14 to 127.0.0.1:48004
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582286.25835 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582286.3668
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582286.25877 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582286.37566
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582286.25911 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582286.38445
+Router 8: recv pkt at 1673582286.36724 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582286.47569
+Router 8: recv pkt at 1673582286.37625 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582286.49314
+Router 8: recv pkt at 1673582286.38501 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582286.51036
+Router 6: recv pkt at 1673582286.47603 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582286.58448
+Router 6: recv pkt at 1673582286.49371 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582286.6106
+Router 6: recv pkt at 1673582286.51092 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582286.63626
+Router 5: recv pkt at 1673582286.5848 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582286.69324
+Router 5: recv pkt at 1673582286.61127 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582286.72817
+Router 5: recv pkt at 1673582286.63684 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582286.76218
+Router 11: recv pkt at 1673582286.68544 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582286.78569
+Router 11: recv pkt at 1673582286.69381 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582287.20226
+Router 11: recv pkt at 1673582286.72874 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582287.24563
+Router 11: recv pkt at 1673582286.76273 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582287.28808
+Router 5: recv pkt at 1673582286.78602 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582286.88628
+Router 6: recv pkt at 1673582286.88664 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 8, 1673582286.98689
+Router 8: recv pkt at 1673582286.98722 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 14, 1673582287.08747
+Router 14: recv pkt at 1673582287.08788 dest for 127.0.0.1:48004 (node '14')
+Sending packet from router 14 to 127.0.0.1:48004
+Router 13: recv pkt at 1673582287.20274 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582287.20462 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582287.70488
+Router 13: recv pkt at 1673582287.24601 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582287.24749 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582287.74801
+Router 13: recv pkt at 1673582287.28845 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582287.28968 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582287.79045
+Router 11: recv pkt at 1673582287.70548 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582287.80573
+Router 11: recv pkt at 1673582287.74822 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582287.84874
+Router 11: recv pkt at 1673582287.79066 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582287.89143
+Router 5: recv pkt at 1673582287.80585 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582287.90611
+Router 5: recv pkt at 1673582287.84904 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582287.94955
+Router 5: recv pkt at 1673582287.8918 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582287.99257
+Router 6: recv pkt at 1673582287.90645 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 8, 1673582288.0067
+Router 6: recv pkt at 1673582287.95034 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 8, 1673582288.05085
+Router 6: recv pkt at 1673582287.99448 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 8, 1673582288.09525
+Router 8: recv pkt at 1673582288.0068 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 14, 1673582288.10706
+Router 8: recv pkt at 1673582288.05102 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 14, 1673582288.15153
+Router 8: recv pkt at 1673582288.09544 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 14, 1673582288.19621
+Router 14: recv pkt at 1673582288.10719 dest for 127.0.0.1:48004 (node '14')
+Sending packet from router 14 to 127.0.0.1:48004
+Router 14: recv pkt at 1673582288.15175 dest for 127.0.0.1:48004 (node '14')
+Sending packet from router 14 to 127.0.0.1:48004
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582288.15207 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582288.26052
+Router 14: recv pkt at 1673582288.19642 dest for 127.0.0.1:48004 (node '14')
+Sending packet from router 14 to 127.0.0.1:48004
+Router 8: recv pkt at 1673582288.26067 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582288.36911
+Router 6: recv pkt at 1673582288.36939 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582288.47783
+Router 5: recv pkt at 1673582288.47802 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582288.58647
+Router 11: recv pkt at 1673582288.58666 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582289.09511
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582288.89819 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582289.00664
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582288.89831 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582289.01521
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582288.89838 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582289.02372
+Router 8: recv pkt at 1673582289.00713 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582289.11558
+Router 8: recv pkt at 1673582289.01557 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582289.13247
+Router 8: recv pkt at 1673582289.02391 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582289.14925
+Router 13: recv pkt at 1673582289.09535 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582289.09602 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582289.59628
+Router 6: recv pkt at 1673582289.11573 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582289.22418
+Router 6: recv pkt at 1673582289.13266 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582289.24955
+Router 6: recv pkt at 1673582289.14946 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582289.2748
+Router 5: recv pkt at 1673582289.22432 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582289.33277
+Router 5: recv pkt at 1673582289.24986 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582289.36676
+Router 5: recv pkt at 1673582289.27543 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582289.40077
+Router 11: recv pkt at 1673582289.33301 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582289.84146
+Router 11: recv pkt at 1673582289.36734 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582289.88423
+Router 11: recv pkt at 1673582289.40135 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582289.9267
+Router 11: recv pkt at 1673582289.59688 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582289.69714
+Router 5: recv pkt at 1673582289.69757 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582289.79783
+Router 6: recv pkt at 1673582289.79812 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 8, 1673582289.89838
+Router 13: recv pkt at 1673582289.84166 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+Router 13: recv pkt at 1673582289.8845 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+Router 8: recv pkt at 1673582289.89881 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 14, 1673582289.99907
+Router 13: recv pkt at 1673582289.92699 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582289.92735 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582290.42761
+Router 14: recv pkt at 1673582289.99922 dest for 127.0.0.1:48004 (node '14')
+Sending packet from router 14 to 127.0.0.1:48004
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582289.99964 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582290.10809
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582289.99973 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582290.11663
+spiffy_header nodeID: 14
+Router 14: recv pkt at 1673582289.9998 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 8, 1673582290.12514
+Router 8: recv pkt at 1673582290.10827 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582290.21672
+Router 8: recv pkt at 1673582290.11682 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582290.23371
+Router 8: recv pkt at 1673582290.12536 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 6, 1673582290.2507
+Router 6: recv pkt at 1673582290.21701 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582290.32546
+Router 6: recv pkt at 1673582290.23391 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582290.3508
+Router 6: recv pkt at 1673582290.25093 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 5, 1673582290.37628
+Router 5: recv pkt at 1673582290.32558 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582290.43403
+Router 5: recv pkt at 1673582290.35099 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582290.46788
+Router 5: recv pkt at 1673582290.37646 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 11, 1673582290.50181
+Router 11: recv pkt at 1673582290.42775 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582290.528
+Router 11: recv pkt at 1673582290.43422 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582290.94266
+Router 11: recv pkt at 1673582290.46825 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582290.98515
+Router 11: recv pkt at 1673582290.50246 dest for 127.0.0.1:48008 (node '13')
+Enqueued packet bound for 13, 1673582291.0278
+Router 5: recv pkt at 1673582290.52836 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582290.62862
+Router 6: recv pkt at 1673582290.62883 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 8, 1673582290.72909
+Router 8: recv pkt at 1673582290.72928 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 14, 1673582290.82954
+Router 14: recv pkt at 1673582290.82975 dest for 127.0.0.1:48004 (node '14')
+Sending packet from router 14 to 127.0.0.1:48004
+Router 13: recv pkt at 1673582290.94288 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582290.94339 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582291.44365
+Router 13: recv pkt at 1673582290.98528 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582290.98554 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582291.48606
+Router 13: recv pkt at 1673582291.02805 dest for 127.0.0.1:48008 (node '13')
+Sending packet from router 13 to 127.0.0.1:48008
+spiffy_header nodeID: 13
+Router 13: recv pkt at 1673582291.02836 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 11, 1673582291.52913
+Router 11: recv pkt at 1673582291.44432 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582291.54457
+Router 11: recv pkt at 1673582291.48662 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582291.58713
+Router 11: recv pkt at 1673582291.52967 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 5, 1673582291.63044
+Router 5: recv pkt at 1673582291.54474 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582291.64499
+Router 5: recv pkt at 1673582291.5875 dest for 127.0.0.1:48004 (node '14')
+Enqueued packet bound for 6, 1673582291.68801

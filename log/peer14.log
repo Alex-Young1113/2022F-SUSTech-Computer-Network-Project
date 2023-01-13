@@ -3742,3 +3742,41 @@
 2023-01-13 11:58:01,411 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq208, ack0, pkt_len1040
 2023-01-13 11:58:01,412 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq209, ack0, pkt_len1040
 2023-01-13 11:58:01,412 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq210, ack0, pkt_len1040
+2023-01-13 11:58:02,515 -+- PEER14_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48008) via spiffy, seq0, ack210, pkt_len16
+2023-01-13 11:58:02,515 -+- PEER14_LOGGER -+- INFO -+- 211 214
+2023-01-13 11:58:02,515 -+- PEER14_LOGGER -+- INFO -+- unack number: 0
+2023-01-13 11:58:02,516 -+- PEER14_LOGGER -+- INFO -+- cwnd 249.3528175354004 2.0
+2023-01-13 11:58:02,516 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq211, ack0, pkt_len1040
+2023-01-13 11:58:02,516 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq212, ack0, pkt_len1040
+2023-01-13 11:58:02,516 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq213, ack0, pkt_len1040
+2023-01-13 11:58:03,345 -+- PEER14_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48008) via spiffy, seq0, ack210, pkt_len16
+2023-01-13 11:58:04,364 -+- PEER14_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48008) via spiffy, seq0, ack210, pkt_len16
+2023-01-13 11:58:04,408 -+- PEER14_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48008) via spiffy, seq0, ack210, pkt_len16
+2023-01-13 11:58:04,408 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq211, ack0, pkt_len1040
+2023-01-13 11:58:04,452 -+- PEER14_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48008) via spiffy, seq0, ack210, pkt_len16
+2023-01-13 11:58:05,153 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq211, ack0, pkt_len1040
+2023-01-13 11:58:05,154 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq212, ack0, pkt_len1040
+2023-01-13 11:58:05,154 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq213, ack0, pkt_len1040
+2023-01-13 11:58:06,257 -+- PEER14_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48008) via spiffy, seq0, ack213, pkt_len16
+2023-01-13 11:58:06,257 -+- PEER14_LOGGER -+- INFO -+- 214 217
+2023-01-13 11:58:06,257 -+- PEER14_LOGGER -+- INFO -+- unack number: 0
+2023-01-13 11:58:06,257 -+- PEER14_LOGGER -+- INFO -+- cwnd 253.09459805488586 2.0
+2023-01-13 11:58:06,257 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq214, ack0, pkt_len1040
+2023-01-13 11:58:06,258 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq215, ack0, pkt_len1040
+2023-01-13 11:58:06,258 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq216, ack0, pkt_len1040
+2023-01-13 11:58:07,088 -+- PEER14_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48008) via spiffy, seq0, ack213, pkt_len16
+2023-01-13 11:58:08,107 -+- PEER14_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48008) via spiffy, seq0, ack213, pkt_len16
+2023-01-13 11:58:08,151 -+- PEER14_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48008) via spiffy, seq0, ack213, pkt_len16
+2023-01-13 11:58:08,152 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq214, ack0, pkt_len1040
+2023-01-13 11:58:08,196 -+- PEER14_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48008) via spiffy, seq0, ack213, pkt_len16
+2023-01-13 11:58:08,898 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq214, ack0, pkt_len1040
+2023-01-13 11:58:08,898 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq215, ack0, pkt_len1040
+2023-01-13 11:58:08,898 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq216, ack0, pkt_len1040
+2023-01-13 11:58:09,999 -+- PEER14_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48008) via spiffy, seq0, ack216, pkt_len16
+2023-01-13 11:58:09,999 -+- PEER14_LOGGER -+- INFO -+- 217 220
+2023-01-13 11:58:09,999 -+- PEER14_LOGGER -+- INFO -+- unack number: 0
+2023-01-13 11:58:09,999 -+- PEER14_LOGGER -+- INFO -+- cwnd 256.8363652229309 2.0
+2023-01-13 11:58:09,999 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq217, ack0, pkt_len1040
+2023-01-13 11:58:09,999 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq218, ack0, pkt_len1040
+2023-01-13 11:58:09,999 -+- PEER14_LOGGER -+- DEBUG -+- sending a type3 pkt to ('127.0.0.1', 48008) via spiffy, seq219, ack0, pkt_len1040
+2023-01-13 11:58:10,829 -+- PEER14_LOGGER -+- DEBUG -+- Receiving a type4 pkt from ('127.0.0.1', 48008) via spiffy, seq0, ack216, pkt_len16
