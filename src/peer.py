@@ -253,6 +253,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         # guarantee that the chunk is sorted
         if key not in ex_downloading_chunkhash_dict:
             return
+
         last_recv_time_dict[key] = time.time()
 
         ex_downloading_chunkhash: str = ex_downloading_chunkhash_dict[key]
@@ -269,6 +270,9 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         # send back ACK
         biggest_seq = max(Seq, biggest_seq)
         ack_num = biggest_seq
+
+        if Seq < smallest_seq:
+            return
         # ------ note ------
         # the first 2 branches are used to handle discontinuous pkts
         #   - if there is a discontinuous pkt arrival, then step into the 1st branch,
@@ -495,9 +499,15 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
             key], biggest_ack_dict[key], redundant_ack_dict[key]
         timeout_interval = timeout_interval_dict[key] if config.timeout == 0 else config.timeout
 
-        if Ack in pipe_list_dict[key]:
+        pipe_list_copy = pipe_list_dict[key].copy()
+
+        if Ack in pipe_list_copy:
             # remove the pkt of waiting for Ack from pipe_list
             pipe_list_dict[key].remove(Ack)
+
+        for ack in pipe_list_copy:
+            if ack < Ack:
+                pipe_list_dict[key].remove(ack)
 
         # must process all retransmit then normally send DATA
         ex_sending_chunkhash: str = ex_sending_chunkhash_dict[key]
@@ -614,31 +624,16 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                 smallest_unack = Ack + 1
                 if (len(pipe_list_dict[key]) != 0):
                     smallest_unack = min(pipe_list_dict[key])
-                # if there is free window size, then continue sending DATA pkt
 
-                # free_window_size = cwnd[key] - len(pipe_list_dict[key])
-                # if free_window_size > 0:
-                #     upper_bound = seq_st + min(10, free_window_size) + 1
-                #     for seq_num in range(seq_st+1, upper_bound): # seq_num = [+1,..., +free_window_size+1]
-                #         biggest_ack_dict[key] = seq_num
-                #         left = (seq_num - 1) * MAX_PAYLOAD
-                #         right = min((seq_num) * MAX_PAYLOAD, CHUNK_DATA_SIZE)
-                #         chunk_data: bytes = config.haschunks[ex_sending_chunkhash][left: right]
-                #         # start timer in sender
-                #         if config.timeout == 0:
-                #             pkt_time_stamp_dict[key][(ex_sending_chunkhash, seq_num)] = time.time()
-                #         # send next data
-                #         data_header = struct.pack("!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN + len(chunk_data), seq_num, 0)
-                #         data_pkt = data_header + chunk_data
-                #         sock.sendto(data_pkt, from_addr)
-                #         pipe_list_dict[key].add(seq_num)
-                #         if (seq_num) * MAX_PAYLOAD >= CHUNK_DATA_SIZE: # already complete sending
-                #             break
+                # if there is free window size, then continue sending DATA pkt
 
                 upper_bound = seq_st+math.floor(cwnd[key]) + 1
                 # seq_num = [+1,..., +free_window_size+1]
                 sock.add_log(str(smallest_unack) + ' ' +
                              str(smallest_unack + math.floor(cwnd[key]) + 1))
+                sock.add_log('unack number: ' + str(len(pipe_list_dict[key])))
+                sock.add_log('cwnd ' + str(time.time() -
+                                           download_start_time[key]) + ' ' + str(cwnd[key]))
                 for seq_num in range(smallest_unack, smallest_unack + math.floor(cwnd[key]) + 1):
                     if seq_num in pipe_list_dict[key] or seq_num in already_acked[key]:
                         continue
@@ -700,6 +695,7 @@ def time_out_retransmission(sock: simsocket.SimSocket, from_addr):
         # 无论是sender还是receiver， 收到包后last_recv_time_dict就会更新，且直到连接中断前不会pop
         # 因此，若last_recv_time_dict[key]为空，说明目前两个地址之间没有连接，可以直接结束函数以加快速度
         last_recv_time = last_recv_time_dict.get(key, -1)
+
         if last_recv_time == -1:
             continue
 
@@ -717,14 +713,13 @@ def time_out_retransmission(sock: simsocket.SimSocket, from_addr):
                 ex_downloading_chunkhash_dict.pop(key, None)
                 pkt_time_stamp_dict.pop(key, None)
                 last_recv_time_dict.pop(key, None)
-
             # check the time stamps
             # pkt_time_stamp = {(chunkhash, seq_num): start_time}
             # 遍历所有尚未收到ack的包，检查是否有包超时，如果超时则重传一份
             for pkt_time_stamp_key in list(pkt_time_stamp.keys()):
                 start_time = pkt_time_stamp[pkt_time_stamp_key]
+
                 if cur_time - start_time > timeout_interval:  # normal time out
-                    sock.add_log('11111')
                     # timeout retransmit
                     pkt_time_stamp_dict[key].pop(pkt_time_stamp_key, None)
                     (chunkhash_str, seq_num) = pkt_time_stamp_key
