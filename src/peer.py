@@ -238,6 +238,7 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
                 "!HBBHHII", 52305, 68, 2, HEADER_LEN, HEADER_LEN+len(get_chunkhash), 0, 0)
             get_pkt = get_header + get_chunkhash
             sock.sendto(get_pkt, from_addr)
+            sock.add_log(chunkhash_str)
         else:
             # if it has built connection, then send back DENIED pkt
             # ------
@@ -270,9 +271,8 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         # send back ACK
         biggest_seq = max(Seq, biggest_seq)
         ack_num = biggest_seq
+        sock.add_log(str(smallest_seq) + ' ' + str(biggest_seq))
 
-        if Seq < smallest_seq:
-            return
         # ------ note ------
         # the first 2 branches are used to handle discontinuous pkts
         #   - if there is a discontinuous pkt arrival, then step into the 1st branch,
@@ -311,6 +311,9 @@ def process_receiver(sock: simsocket.SimSocket, from_addr, Type, data, plen, Seq
         else:  # normal
             ack_num = biggest_seq
             smallest_seq = biggest_seq
+
+        if ack_num < smallest_seq:
+            return
 
         # write back to the dict value
         smallest_seq_dict[key], biggest_seq_dict[key] = smallest_seq, biggest_seq
@@ -621,8 +624,8 @@ def process_sender(sock: simsocket.SimSocket, from_addr, Type, data, plen, Ack):
                     data_header = struct.pack(
                         "!HBBHHII", 52305, 68, 3, HEADER_LEN, HEADER_LEN+len(chunk_data), seq_num + 1, 0)
                     data_pkt = data_header + chunk_data
-                    sock.sendto(data_pkt, from_addr)
                     sock.add_log('unknow reason retransmit')
+                    sock.sendto(data_pkt, from_addr)
             else:
                 # continue sending DATA
                 pkt_time_stamp_dict[key] = dict()
